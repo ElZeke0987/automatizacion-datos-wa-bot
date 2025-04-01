@@ -1,0 +1,22 @@
+{
+  "dependencies": {
+    "@nlpjs/basic": "^5.0.0-alpha.5",
+    "@nlpjs/directline-connector": "^5.0.0-alpha.5",
+    "@nlpjs/express-api-server": "^5.0.0-alpha.5",
+    "@nlpjs/lang-es": "^5.0.0-alpha.5",
+    "axios": "^1.8.1",
+    "body-parser": "^1.20.3",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "form-data": "^4.0.2",
+    "node-nlp": "^5.0.0-alpha.5",
+    "python-shell": "^5.0.0",
+    "twilio": "^5.4.5",
+    "whatsapp": "^0.0.5-Alpha"
+  },
+  "type": "module",
+  "scripts": {
+    "server": "node ./src/index.js"
+  }
+}

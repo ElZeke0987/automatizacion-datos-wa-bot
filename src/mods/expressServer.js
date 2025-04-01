@@ -1,0 +1,38 @@
+import { messagesEnd, setWebhookD360 } from "../endpoints/dialogEnds.js"
+import { recibeMsgEvents, registerNumberPoint, subscribeService ,testMsgEndPoint } from '../endpoints/testEnd.js'
+import express from "express";
+import { twilioMsgEndPoint } from '../endpoints/twilioEnd.js';
+import bodyParser from 'body-parser';
+import cors from "cors";
+
+import { setupNlp } from "./nlpConfs/nlpMods.js";
+
+const corsOptionsDef = {
+    origin: "http://localhost:3000",
+}
+
+export function ExpressServer(port=3000, server, corsOptions = corsOptionsDef){
+
+    setupNlp()
+    
+
+    server.use(cors(corsOptions))
+    server.use(express.json())
+    server.use(bodyParser.urlencoded({ extended: false }))
+    /*
+    app.get('/', subscribeService);
+    app.post('/', recibeMsgEvents)*/
+
+    server.post("/", messagesEnd)
+    server.get("/test-ngrok", (req, res)=>{console.log("Test Ngrok"); res.status(200).send("OK")})
+
+
+    server.post('/twilio_end_msg', twilioMsgEndPoint)
+    server.get("/set-webhook-d360", setWebhookD360)
+
+    server.post("/set-webhook-d360", setWebhookD360)
+
+   
+    
+
+}

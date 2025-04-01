@@ -1,0 +1,51 @@
+{
+    "San Justo": {
+        "place": "san justo",
+        "parent": "partidos",
+        "parentName": "la matanza",
+        "childs": ["barrios", "villas"],
+        "vars": ["san justo", "san juto", "sa justo", "zan juzto", "san just", "an justo", " an juto"]
+    },
+    "Gonzáles Catan": {
+        "place": "gonzales catan",
+        "parent": "partidos",
+        "parentName": "la matanza",
+        "childs": ["barrios", "villas"],
+        "vars": ["gonsales catan", "gonsalez catan", "gonzalés catán", "gonzales catan", "gonales catan", "gonáles catan", "gonzález catan", "gonzalez catan"]
+    },
+    "ramos mejia": {
+        "place": "ramos mejia",
+        "parent": "partidos",
+        "parentName": "la matanza",
+        "childs": ["barrios", "villas"],
+        "vars": ["ramo mejia", "ramos mejía", "ramoz mejía", "ramoz mejia", "ramos megia", "ramos mejia", "ramos meji"]
+    },
+    "Virrey del Pino": {
+        "place": "virrey del pino",
+        "parent": "partidos",
+        "parentName": "la matanza",
+        "childs": ["barrios", "villas"],
+        "vars": ["birrey del pino", "los km", "virrey del pino", "virrey ddl pino", "virrey del pin"]
+    },
+    "20 de junio": {
+        "place": "20 de junio",
+        "parent": "partidos",
+        "parentName": "la matanza",
+        "childs": ["barrios", "villas"],
+        "vars": ["2 de junio", "20 de junio", "21 de junio", "20 de juni", "20 d junio", "20/6"]
+    },
+    "casanova": {
+        "place": "casanova",
+        "parent": "partidos",
+        "parentName": "la matanza",
+        "childs": ["barrios", "villas"],
+        "vars": ["casanova", "casanoba", "cazanova", "cazanoba", "casa nova", "casa noba", "casanov", "casano"]
+    },
+    "tablada": {
+        "place": "tablada",
+        "parent": "partidos",
+        "parentName": "la matanza",
+        "childs": ["barrios", "villas"],
+        "vars": ["tablada"]
+    }
+}

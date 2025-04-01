@@ -1,0 +1,17 @@
+@use "./vars.scss" as *;
+
+.input-normal{
+    background-color: $Input-BG;
+    color: $Input-Color;
+    width: $Input-WX;
+    
+    input{
+        transition: all 0.6s;
+        background-color: $Input-Input-BG;
+        color: $Input-Input-Color;
+        &:focus{
+            background-color: $Input-Input-focus-BG;
+            color: $Input-Input-focus-Color;
+        }
+    }
+}

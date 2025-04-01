@@ -1,0 +1,65 @@
+{
+    "zonas": [
+        {}
+    ],
+    "partidos": [
+        {
+            "place": "la matanza",
+            "parent": "zonas",
+            "parentName": "zona oeste",
+            "childs": ["localidades"]
+        }
+    ],
+    "localidades": [
+        {
+            "place": "san justo",
+            "parent": "partidos",
+            "parentName": "la matanza",
+            "childs": ["barrios", "villas"],
+            "vars": ["san justo", "san juto", "sa justo", "zan juzto", "san just"]
+        },
+        {
+            "place": "gonzales catan",
+            "parent": "partidos",
+            "parentName": "la matanza",
+            "childs": ["barrios", "villas"],
+            "vars": ["gonsales catan", "gonsalez catan", "gonzalés catán"]
+        },
+        {
+            "place": "ramos mejia",
+            "parent": "partidos",
+            "parentName": "la matanza",
+            "childs": ["barrios", "villas"],
+            "vars": ["ramo mejia", "ramos mejía", "ramoz mejía", "ramoz mejia", "ramos megia", "ramos mejia", "ramos meji"]
+        },
+        {
+            "place": "virrey del pino",
+            "parent": "partidos",
+            "parentName": "la matanza",
+            "childs": ["barrios", "villas"],
+            "vars": ["birrey del pino", "los km", "virrey del pino"]
+        },
+        {
+            "place": "20 de junio",
+            "parent": "partidos",
+            "parentName": "la matanza",
+            "childs": ["barrios", "villas"],
+            "vars": ["2 de junio", "20 de junio", "21 de junio", "20 de juni", "20 d junio", "20/6"]
+        },
+        {
+            "place": "casanova",
+            "parent": "partidos",
+            "parentName": "la matanza",
+            "childs": ["barrios", "villas"],
+            "vars": ["casanova", "casanoba", "cazanova", "cazanoba", "casa nova", "casa noba", "casanov", "casano"]
+        },
+        {
+            "place": "tablada",
+            "parent": "partidos",
+            "parentName": "la matanza",
+            "childs": ["barrios", "villas"],
+            "vars": ["tablada"]
+        }
+        
+    ]
+}

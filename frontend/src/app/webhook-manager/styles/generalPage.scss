@@ -1,0 +1,12 @@
+@use "./pageVars.scss" as *;
+
+.webhook-page{
+    height: 100vh;
+    gap: $WebH-Gap;
+    .fields-to-send{
+        border-radius: $Send-Radius;
+        padding: $Send-Padding;
+        width: 50%;
+        gap: $Send-Gap;
+    }
+}

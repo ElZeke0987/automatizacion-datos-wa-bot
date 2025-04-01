@@ -1,0 +1,14 @@
+@use "./vars.scss" as *;
+
+.webhook-btn{
+    border-radius: $Btn-Radius;
+    padding: $Btn-Padding;
+    background-color: $Btn-BG;
+    color: $Btn-Color;
+    transition: all 0.6s;
+    cursor: pointer;
+    &:hover{
+        background-color: $Btn-Hover-BG;
+        color: $Btn-Hover-Color;
+    }
+}

@@ -1,0 +1,4222 @@
+{
+  "settings": {
+    "tag": "nlp",
+    "languages": [
+      "es"
+    ],
+    "forceNER": true,
+    "corpora": [
+      "./src/mods/nlpConfs/corpus.json"
+    ],
+    "calculateSentiment": true,
+    "executeActionsBeforeAnswers": false
+  },
+  "nluManager": {
+    "settings": {
+      "tag": "nlu-manager"
+    },
+    "locales": [
+      "es"
+    ],
+    "languageNames": {},
+    "domainManagers": {
+      "es": {
+        "settings": {
+          "locale": "es",
+          "trainByDomain": false,
+          "tag": "domain-manager-es",
+          "nluByDomain": {
+            "default": {
+              "className": "NeuralNlu",
+              "settings": {}
+            }
+          },
+          "useStemDict": true
+        },
+        "stemDict": {
+          "%localidades%": {
+            "intent": "cliente.ubi",
+            "domain": "default"
+          },
+          "@local,de,ser": {
+            "intent": "cliente.ubi",
+            "domain": "default"
+          },
+          "@local,en,viv": {
+            "intent": "cliente.ubi",
+            "domain": "default"
+          },
+          "@local,en,res": {
+            "intent": "cliente.ubi",
+            "domain": "default"
+          },
+          "%nombres%": {
+            "intent": "cliente.nom",
+            "domain": "default"
+          },
+          "@nombr,llam,me": {
+            "intent": "cliente.nom",
+            "domain": "default"
+          },
+          "@nombr,hol,llam,me": {
+            "intent": "cliente.nom",
+            "domain": "default"
+          },
+          "@nombr,ser": {
+            "intent": "cliente.nom",
+            "domain": "default"
+          },
+          "%localidades%,%nombres%": {
+            "intent": "cliente.multi.info",
+            "domain": "default"
+          },
+          "@local,@nombr,de,llam,me,ser": {
+            "intent": "cliente.multi.info",
+            "domain": "default"
+          },
+          "@local,@nombr,de,llam,me": {
+            "intent": "cliente.multi.info",
+            "domain": "default"
+          },
+          "@local,@nombr,de,hol,llam,me": {
+            "intent": "cliente.multi.info",
+            "domain": "default"
+          }
+        },
+        "intentDict": {
+          "cliente.ubi": "default",
+          "cliente.nom": "default",
+          "cliente.multi.info": "default"
+        },
+        "sentences": [
+          {
+            "domain": "default",
+            "utterance": "%localidades%",
+            "intent": "cliente.ubi"
+          },
+          {
+            "domain": "default",
+            "utterance": "soy de @localidades",
+            "intent": "cliente.ubi"
+          },
+          {
+            "domain": "default",
+            "utterance": "vivo en @localidades",
+            "intent": "cliente.ubi"
+          },
+          {
+            "domain": "default",
+            "utterance": "resido en @localidades",
+            "intent": "cliente.ubi"
+          },
+          {
+            "domain": "default",
+            "utterance": "%nombres%",
+            "intent": "cliente.nom"
+          },
+          {
+            "domain": "default",
+            "utterance": "me llamo @nombres",
+            "intent": "cliente.nom"
+          },
+          {
+            "domain": "default",
+            "utterance": "hola me llamo @nombres",
+            "intent": "cliente.nom"
+          },
+          {
+            "domain": "default",
+            "utterance": "soy @nombres",
+            "intent": "cliente.nom"
+          },
+          {
+            "domain": "default",
+            "utterance": "%nombres% %localidades%",
+            "intent": "cliente.multi.info"
+          },
+          {
+            "domain": "default",
+            "utterance": "%localidades% %nombres%",
+            "intent": "cliente.multi.info"
+          },
+          {
+            "domain": "default",
+            "utterance": "soy de @localidades me llamo @nombres",
+            "intent": "cliente.multi.info"
+          },
+          {
+            "domain": "default",
+            "utterance": "me llamo @nombres de @localidades",
+            "intent": "cliente.multi.info"
+          },
+          {
+            "domain": "default",
+            "utterance": "hola me llamo @nombres de @localidades",
+            "intent": "cliente.multi.info"
+          }
+        ],
+        "domains": {
+          "master_domain": {
+            "settings": {
+              "locale": "es",
+              "tag": "nlu-es",
+              "keepStopwords": true,
+              "nonefeatureValue": 1,
+              "nonedeltaMultiplier": 1.2,
+              "spellCheck": false,
+              "spellCheckDistance": 1,
+              "filterZeros": true,
+              "log": true
+            },
+            "features": {
+              "%localidades%": 1,
+              "ser": 1,
+              "de": 1,
+              "@local": 1,
+              "viv": 1,
+              "en": 1,
+              "res": 1,
+              "%nombres%": 1,
+              "me": 1,
+              "llam": 1,
+              "@nombr": 1,
+              "hol": 1
+            },
+            "intents": {
+              "cliente.ubi": 1,
+              "cliente.nom": 1,
+              "cliente.multi.info": 1
+            },
+            "intentFeatures": {
+              "cliente.ubi": {
+                "%localidades%": 1,
+                "ser": 1,
+                "de": 1,
+                "@local": 1,
+                "viv": 1,
+                "en": 1,
+                "res": 1
+              },
+              "cliente.nom": {
+                "%nombres%": 1,
+                "me": 1,
+                "llam": 1,
+                "@nombr": 1,
+                "hol": 1,
+                "ser": 1
+              },
+              "cliente.multi.info": {
+                "%nombres%": 1,
+                "%localidades%": 1,
+                "ser": 1,
+                "de": 1,
+                "@local": 1,
+                "me": 1,
+                "llam": 1,
+                "@nombr": 1,
+                "hol": 1
+              }
+            },
+            "featuresToIntent": {
+              "%localidades%": [
+                "cliente.ubi",
+                "cliente.multi.info"
+              ],
+              "ser": [
+                "cliente.ubi",
+                "cliente.nom",
+                "cliente.multi.info"
+              ],
+              "de": [
+                "cliente.ubi",
+                "cliente.multi.info"
+              ],
+              "@local": [
+                "cliente.ubi",
+                "cliente.multi.info"
+              ],
+              "viv": [
+                "cliente.ubi"
+              ],
+              "en": [
+                "cliente.ubi"
+              ],
+              "res": [
+                "cliente.ubi"
+              ],
+              "%nombres%": [
+                "cliente.nom",
+                "cliente.multi.info"
+              ],
+              "me": [
+                "cliente.nom",
+                "cliente.multi.info"
+              ],
+              "llam": [
+                "cliente.nom",
+                "cliente.multi.info"
+              ],
+              "@nombr": [
+                "cliente.nom",
+                "cliente.multi.info"
+              ],
+              "hol": [
+                "cliente.nom",
+                "cliente.multi.info"
+              ]
+            },
+            "neuralNetwork": {
+              "settings": {
+                "locale": "es",
+                "tag": "nlu-es",
+                "keepStopwords": true,
+                "nonefeatureValue": 1,
+                "nonedeltaMultiplier": 1.2,
+                "spellCheck": false,
+                "spellCheckDistance": 1,
+                "filterZeros": true,
+                "log": true
+              },
+              "features": [
+                "%localidades%",
+                "ser",
+                "de",
+                "@local",
+                "viv",
+                "en",
+                "res",
+                "%nombres%",
+                "me",
+                "llam",
+                "@nombr",
+                "hol"
+              ],
+              "intents": [
+                "cliente.ubi",
+                "cliente.nom",
+                "cliente.multi.info"
+              ],
+              "perceptrons": [
+                [
+                  8.956280708312988,
+                  1.1754213571548462,
+                  2.6313843727111816,
+                  5.169767379760742,
+                  1.2691270112991333,
+                  2.5383734703063965,
+                  1.2692897319793701,
+                  -14.258885383605957,
+                  -4.020573139190674,
+                  -4.020573139190674,
+                  -6.482683181762695,
+                  -0.35822397470474243,
+                  5.3081911917860385
+                ],
+                [
+                  -14.262253761291504,
+                  1.3534541130065918,
+                  -7.830525875091553,
+                  -7.830525875091553,
+                  0,
+                  0,
+                  0,
+                  7.556033134460449,
+                  0.6751582026481628,
+                  0.6751582026481628,
+                  6.221994400024414,
+                  0.0029466815758496523,
+                  6.71115896301099
+                ],
+                [
+                  13.872261047363281,
+                  -0.3581404387950897,
+                  7.915295124053955,
+                  6.285947799682617,
+                  -0.8229173421859741,
+                  -1.6104905605316162,
+                  -0.7173237800598145,
+                  13.894990921020508,
+                  4.8189496994018555,
+                  4.8189496994018555,
+                  4.19190788269043,
+                  -0.15454913675785065,
+                  -13.621737247087681
+                ]
+              ]
+            }
+          }
+        }
+      }
+    },
+    "intentDomains": {},
+    "extraSentences": [
+      [
+        "es",
+        "%localidades%"
+      ],
+      [
+        "es",
+        "soy de @localidades"
+      ],
+      [
+        "es",
+        "vivo en @localidades"
+      ],
+      [
+        "es",
+        "resido en @localidades"
+      ],
+      [
+        "es",
+        "%nombres%"
+      ],
+      [
+        "es",
+        "me llamo @nombres"
+      ],
+      [
+        "es",
+        "hola me llamo @nombres"
+      ],
+      [
+        "es",
+        "soy @nombres"
+      ],
+      [
+        "es",
+        "%nombres% %localidades%"
+      ],
+      [
+        "es",
+        "%localidades% %nombres%"
+      ],
+      [
+        "es",
+        "soy de @localidades me llamo @nombres"
+      ],
+      [
+        "es",
+        "me llamo @nombres de @localidades"
+      ],
+      [
+        "es",
+        "hola me llamo @nombres de @localidades"
+      ]
+    ]
+  },
+  "ner": {
+    "settings": {
+      "tag": "ner"
+    },
+    "rules": {
+      "es": {
+        "localidades": {
+          "name": "localidades",
+          "type": "enum",
+          "rules": [
+            {
+              "option": "Aldo Bonzi",
+              "texts": [
+                "Bonzi",
+                "A. Bonzi",
+                "AldoBonzi",
+                "Bonzi Bs.As.",
+                "AldoB"
+              ]
+            },
+            {
+              "option": "Avellaneda",
+              "texts": [
+                "Avelaneda",
+                "Abellaneda",
+                "Avejaneda",
+                "Vellaneda"
+              ]
+            },
+            {
+              "option": "Banfield",
+              "texts": [
+                "Banfild",
+                "Banfiel",
+                "Bamfield",
+                "Banfild"
+              ]
+            },
+            {
+              "option": "Berazategui",
+              "texts": [
+                "Berazateguy",
+                "Berazatequi",
+                "Berasategui",
+                "Bera"
+              ]
+            },
+            {
+              "option": "Caseros",
+              "texts": [
+                "Caserus",
+                "Casero",
+                "Caceros",
+                "Cazeros"
+              ]
+            },
+            {
+              "option": "Castelar",
+              "texts": [
+                "Castellar",
+                "Castelan",
+                "Castelar",
+                "Castelar"
+              ]
+            },
+            {
+              "option": "Ciudad Evita",
+              "texts": [
+                "C. Evita",
+                "Cdad. Evita",
+                "Ciudadevita",
+                "Evita Ciudad"
+              ]
+            },
+            {
+              "option": "Ciudad Madero",
+              "texts": [
+                "Madero",
+                "C. Madero",
+                "CiudadMadero",
+                "Madero Bs.As.",
+                "C.Madero"
+              ]
+            },
+            {
+              "option": "El Palomar",
+              "texts": [
+                "Palomar",
+                "El Palomar",
+                "Palomar Bs.As.",
+                "ElPaloMar",
+                "Cdad Jardin",
+                "Ciudad Jardin"
+              ]
+            },
+            {
+              "option": "Don Torcuato",
+              "texts": [
+                "Torcuato",
+                "DonTorcuato",
+                "D. Torcuato",
+                "Torcu"
+              ]
+            },
+            {
+              "option": "Ezeiza",
+              "texts": [
+                "Ezeiza",
+                "Ezeisa",
+                "Eziza",
+                "Ezeiza Airport"
+              ]
+            },
+            {
+              "option": "Florencio Varela",
+              "texts": [
+                "Florencio",
+                "F. Varela",
+                "Varela",
+                "Floren Varela"
+              ]
+            },
+            {
+              "option": "Gerli",
+              "texts": [
+                "Gerli",
+                "Jerli",
+                "Gerly",
+                "Guerli"
+              ]
+            },
+            {
+              "option": "González Catán",
+              "texts": [
+                "Gonzalez Catan",
+                "Gonzales Catán",
+                "GonzaCatán",
+                "Catán",
+                "gonsales catan",
+                "gonsalez catan",
+                "gonzalés catán",
+                "gonzales catan",
+                "gonales catan",
+                "gonáles catan",
+                "gonzález catan",
+                "gonzalez catan"
+              ]
+            },
+            {
+              "option": "Gregorio de Laferrère",
+              "texts": [
+                "Laferrère",
+                "Gregorio Laferrere",
+                "Laferrere",
+                "G. Laferrère",
+                "lafe",
+                "laferrere",
+                "laferr",
+                "la fe",
+                "laferrer",
+                "laferer"
+              ]
+            },
+            {
+              "option": "Haedo",
+              "texts": [
+                "Haedo",
+                "Aedo",
+                "Haedho",
+                "Haedo CABA"
+              ]
+            },
+            {
+              "option": "Hurlingham",
+              "texts": [
+                "Hurlingam",
+                "Hurlinghan",
+                "Huringham",
+                "Hurlin"
+              ]
+            },
+            {
+              "option": "Isidro Casanova",
+              "texts": [
+                "Casanova",
+                "I. Casanova",
+                "IsidroCasa",
+                "Casanova Bs.As.",
+                "Casa",
+                "Casanoba",
+                "Isidro C."
+              ]
+            },
+            {
+              "option": "Ituzaingó",
+              "texts": [
+                "Ituzaingo",
+                "Ituzáingo",
+                "Ituzaingó",
+                "Itu"
+              ]
+            },
+            {
+              "option": "José C. Paz",
+              "texts": [
+                "Jose C. Paz",
+                "J. C. Paz",
+                "José Paz",
+                "JC Paz"
+              ]
+            },
+            {
+              "option": "La Matanza",
+              "texts": [
+                "Matanza",
+                "Lamatanza",
+                "LaMatanza",
+                "Partido de La Matanza"
+              ]
+            },
+            {
+              "option": "Lanús",
+              "texts": [
+                "Lanus",
+                "Lanuz",
+                "Lanús Oeste",
+                "Lanús Este"
+              ]
+            },
+            {
+              "option": "Llavallol",
+              "texts": [
+                "Llavallol",
+                "Yavallol",
+                "Llavalol",
+                "LlaValol"
+              ]
+            },
+            {
+              "option": "Lomas de Zamora",
+              "texts": [
+                "Lomas Zamora",
+                "LomasDeZamora",
+                "Lomas",
+                "LoZamora"
+              ]
+            },
+            {
+              "option": "Longchamps",
+              "texts": [
+                "Longchamps",
+                "Longchamp",
+                "Lonchamps",
+                "Longshamps"
+              ]
+            },
+            {
+              "option": "Los Polvorines",
+              "texts": [
+                "Polvorines",
+                "L. Polvorines",
+                "LosPolvorines",
+                "Polvorin"
+              ]
+            },
+            {
+              "option": "Malvinas Argentinas",
+              "texts": [
+                "Malvinas",
+                "Malvinas Arg",
+                "MalvinasBsAs",
+                "MalvinasAr"
+              ]
+            },
+            {
+              "option": "Merlo",
+              "texts": [
+                "Merlo",
+                "Merlo Bs.As.",
+                "Merlo Centro",
+                "Mero"
+              ]
+            },
+            {
+              "option": "Monte Chingolo",
+              "texts": [
+                "MonteChingolo",
+                "Chingolo",
+                "M. Chingolo",
+                "MonteChingo",
+                "Monte Chingollo"
+              ]
+            },
+            {
+              "option": "Monte Grande",
+              "texts": [
+                "Montegrande",
+                "M. Grande",
+                "MonteGrande",
+                "MonteGrand"
+              ]
+            },
+            {
+              "option": "Moreno",
+              "texts": [
+                "Moreno",
+                "Moreno Bs.As.",
+                "Moreno Centro",
+                "Moredo"
+              ]
+            },
+            {
+              "option": "Morón",
+              "texts": [
+                "Moron",
+                "Morrón",
+                "Morón",
+                "Morón Centro"
+              ]
+            },
+            {
+              "option": "Quilmes",
+              "texts": [
+                "Quilme",
+                "Quilmez",
+                "Quilmes",
+                "Quilmes Oeste"
+              ]
+            },
+            {
+              "option": "Rafael Castillo",
+              "texts": [
+                "R. Castillo",
+                "Rafael Castillo",
+                "RafaCastillo",
+                "Castillo",
+                "RafaCasti",
+                "Rafael Castilo",
+                "Rafael C.",
+                "Rafel Castillo"
+              ]
+            },
+            {
+              "option": "Ramos Mejía",
+              "texts": [
+                "Ramos Mejia",
+                "Ramo Mejía",
+                "Ramoz Mejía",
+                "Ramos Megia",
+                "Ramosmejia",
+                "ramo mejia",
+                "ramos mejía",
+                "ramoz mejía",
+                "ramoz mejia",
+                "ramos megia",
+                "ramos mejia",
+                "ramos meji"
+              ]
+            },
+            {
+              "option": "Remedios de Escalada",
+              "texts": [
+                "Remedios Escalada",
+                "R. de Escalada",
+                "Escalada",
+                "Remedios"
+              ]
+            },
+            {
+              "option": "San Fernando",
+              "texts": [
+                "SanFernando",
+                "S. Fernando",
+                "SanFer",
+                "San Fer"
+              ]
+            },
+            {
+              "option": "San Isidro",
+              "texts": [
+                "SanIsidro",
+                "S. Isidro",
+                "SanIsi",
+                "SanIsidro Norte"
+              ]
+            },
+            {
+              "option": "San Justo",
+              "texts": [
+                "SanJusto",
+                "S. Justo",
+                "San Just",
+                "SanJust",
+                "san justo",
+                "san juto",
+                "sa justo",
+                "zan juzto",
+                "san just",
+                "an justo",
+                " an juto",
+                "an jto",
+                "san jsto"
+              ]
+            },
+            {
+              "option": "San Miguel",
+              "texts": [
+                "SanMiguel",
+                "S. Miguel",
+                "SanMi",
+                "San Migue"
+              ]
+            },
+            {
+              "option": "Sarandí",
+              "texts": [
+                "Sarandi",
+                "Sarandí",
+                "Sarandí Avellaneda",
+                "Zarandí"
+              ]
+            },
+            {
+              "option": "Solano",
+              "texts": [
+                "Solano",
+                "Villa Solano",
+                "Solan",
+                "Sola",
+                "Solano Oeste"
+              ]
+            },
+            {
+              "option": "Tapiales",
+              "texts": [
+                "Tapiales",
+                "Tapial",
+                "Tapi",
+                "Tapiales Bs.As.",
+                "Tapia"
+              ]
+            },
+            {
+              "option": "Temperley",
+              "texts": [
+                "Temperley",
+                "Temperlei",
+                "Temp",
+                "Temper"
+              ]
+            },
+            {
+              "option": "Tigre",
+              "texts": [
+                "Tigre",
+                "Tigre Centro",
+                "Tigre Delta",
+                "Tigre Bs.As.",
+                "Tgre",
+                "Tigr"
+              ]
+            },
+            {
+              "option": "Valentín Alsina",
+              "texts": [
+                "Valentin Alsina",
+                "V. Alsina",
+                "Alsina",
+                "ValenAlsina"
+              ]
+            },
+            {
+              "option": "Vicente López",
+              "texts": [
+                "VicenteLopez",
+                "V. López",
+                "Vicente López",
+                "VicenLopez"
+              ]
+            },
+            {
+              "option": "Villa Ballester",
+              "texts": [
+                "V. Ballester",
+                "Ballester",
+                "VillaBallester",
+                "Villa B.",
+                "Ballester Bs.As.",
+                "VillaBalles"
+              ]
+            },
+            {
+              "option": "Villa Centenario",
+              "texts": [
+                "V. Centenario",
+                "Centenario",
+                "VillaCentenario",
+                "VillaCen"
+              ]
+            },
+            {
+              "option": "Villa Fiorito",
+              "texts": [
+                "Fiorito",
+                "VillaFiorito",
+                "V. Fiorito",
+                "Fiorito Bs.As."
+              ]
+            },
+            {
+              "option": "Villa Madero",
+              "texts": [
+                "Madero",
+                "VillaMadero",
+                "V. Madero",
+                "Madero Bs.As."
+              ]
+            },
+            {
+              "option": "Villa Luzuriaga",
+              "texts": [
+                "Luzuriaga",
+                "V. Luzuriaga",
+                "Luzu",
+                "Luzuriaga Bs.As.",
+                "VillaLuzu"
+              ]
+            },
+            {
+              "option": "Villa Insuperable",
+              "texts": [
+                "Insuperable",
+                "V. Insuperable",
+                "Insuperable Bs.As.",
+                "VillaInsu"
+              ]
+            },
+            {
+              "option": "Villa La Florida",
+              "texts": [
+                "La Florida",
+                "V. La Florida",
+                "Florida Oeste",
+                "VillaFlorida"
+              ]
+            },
+            {
+              "option": "Villa Adelina",
+              "texts": [
+                "Adelina",
+                "V. Adelina",
+                "Adelina Bs.As.",
+                "VillaAdelina"
+              ]
+            },
+            {
+              "option": "Villa de Mayo",
+              "texts": [
+                "Villa Mayo",
+                "V. de Mayo",
+                "Mayo Bs.As.",
+                "VillaMayo"
+              ]
+            },
+            {
+              "option": "Villa Maipú",
+              "texts": [
+                "Maipú",
+                "V. Maipú",
+                "Maipu",
+                "VillaMaipu"
+              ]
+            },
+            {
+              "option": "Villa Scasso",
+              "texts": [
+                "Scasso",
+                "V. Scasso",
+                "Scasso Bs.As.",
+                "VillaScasso"
+              ]
+            },
+            {
+              "option": "Villa Diamante",
+              "texts": [
+                "Diamante",
+                "V. Diamante",
+                "Diamante Bs.As.",
+                "VillaDiamante"
+              ]
+            },
+            {
+              "option": "Villa Tranquila",
+              "texts": [
+                "Tranquila",
+                "V. Tranquila",
+                "Tranquila Bs.As.",
+                "VillaTranqui"
+              ]
+            },
+            {
+              "option": "Villa Corina",
+              "texts": [
+                "Corina",
+                "V. Corina",
+                "Corina Bs.As.",
+                "VillaCorina"
+              ]
+            },
+            {
+              "option": "Villa Domínico",
+              "texts": [
+                "Domínico",
+                "V. Domínico",
+                "Dominico",
+                "VillaDomini"
+              ]
+            },
+            {
+              "option": "Villa Montoro",
+              "texts": [
+                "Montoro",
+                "V. Montoro",
+                "Montoro Bs.As.",
+                "VillaMontoro"
+              ]
+            },
+            {
+              "option": "Villa Porvenir",
+              "texts": [
+                "Porvenir",
+                "V. Porvenir",
+                "Porvenir Bs.As.",
+                "VillaPorve"
+              ]
+            },
+            {
+              "option": "Villa Numancia",
+              "texts": [
+                "Numancia",
+                "V. Numancia",
+                "Numancia Bs.As.",
+                "VillaNuman"
+              ]
+            },
+            {
+              "option": "Villa Bordeu",
+              "texts": [
+                "Bordeu",
+                "V. Bordeu",
+                "Bordeu Bs.As.",
+                "VillaBordeu"
+              ]
+            },
+            {
+              "option": "Villa Galicia",
+              "texts": [
+                "Galicia",
+                "V. Galicia",
+                "Galicia Bs.As.",
+                "VillaGalicia"
+              ]
+            },
+            {
+              "option": "Villa del Parque",
+              "texts": [
+                "Parque",
+                "V. del Parque",
+                "Parque Bs.As.",
+                "VillaParque"
+              ]
+            },
+            {
+              "option": "Villa Ortúzar",
+              "texts": [
+                "Ortúzar",
+                "V. Ortúzar",
+                "Ortuzar",
+                "VillaOrtu"
+              ]
+            },
+            {
+              "option": "Villa Real",
+              "texts": [
+                "Real",
+                "V. Real",
+                "Real Bs.As.",
+                "VillaReal"
+              ]
+            },
+            {
+              "option": "Villa Santa Rita",
+              "texts": [
+                "Santa Rita",
+                "V. Santa Rita",
+                "SantaRita Bs.As.",
+                "VillaRita"
+              ]
+            },
+            {
+              "option": "Villa General Mitre",
+              "texts": [
+                "G. Mitre",
+                "Villa Mitre",
+                "Mitre Bs.As.",
+                "VillaGMitre"
+              ]
+            },
+            {
+              "option": "Villa Pueyrredón",
+              "texts": [
+                "Pueyrredón",
+                "V. Pueyrredón",
+                "Pueyrredon",
+                "VillaPuey"
+              ]
+            },
+            {
+              "option": "Villa Urquiza",
+              "texts": [
+                "Urquiza",
+                "V. Urquiza",
+                "Urquiza Bs.As.",
+                "VillaUrqui"
+              ]
+            },
+            {
+              "option": "Villa Crespo",
+              "texts": [
+                "Crespo",
+                "V. Crespo",
+                "Crespo Bs.As.",
+                "VillaCrespo"
+              ]
+            },
+            {
+              "option": "Villa Luro",
+              "texts": [
+                "Luro",
+                "V. Luro",
+                "Luro Bs.As.",
+                "VillaLuro"
+              ]
+            },
+            {
+              "option": "Villa Lugano",
+              "texts": [
+                "Lugano",
+                "V. Lugano",
+                "Lugano Bs.As.",
+                "VillaLugano"
+              ]
+            },
+            {
+              "option": "Villa Riachuelo",
+              "texts": [
+                "Riachuelo",
+                "V. Riachuelo",
+                "Riachu",
+                "VillaRiachu"
+              ]
+            },
+            {
+              "option": "Villa Soldati",
+              "texts": [
+                "Soldati",
+                "V. Soldati",
+                "Soldati Bs.As.",
+                "VillaSoldati"
+              ]
+            },
+            {
+              "option": "Villa Lanzone",
+              "texts": [
+                "Lanzone",
+                "V. Lanzone",
+                "Lanzone Bs.As.",
+                "VillaLanzo"
+              ]
+            },
+            {
+              "option": "Villa Albertina",
+              "texts": [
+                "Albertina",
+                "V. Albertina",
+                "Albertina Bs.As.",
+                "VillaAlber"
+              ]
+            },
+            {
+              "option": "Villa Ayacucho",
+              "texts": [
+                "Ayacucho",
+                "V. Ayacucho",
+                "Ayacucho Bs.As.",
+                "VillaAyacu"
+              ]
+            },
+            {
+              "option": "Villa Bosch",
+              "texts": [
+                "Bosch",
+                "V. Bosch",
+                "Bosch Bs.As.",
+                "VillaBosch"
+              ]
+            },
+            {
+              "option": "Villa Chacabuco",
+              "texts": [
+                "Chacabuco",
+                "V. Chacabuco",
+                "Chaca",
+                "VillaChaca"
+              ]
+            },
+            {
+              "option": "Villa Coronel Arias",
+              "texts": [
+                "C. Arias",
+                "Villa Arias",
+                "Arias Bs.As.",
+                "VillaCoronel"
+              ]
+            },
+            {
+              "option": "Villa de los Patricios",
+              "texts": [
+                "Patricios",
+                "V. Patricios",
+                "Patricios Bs.As.",
+                "VillaPatri"
+              ]
+            },
+            {
+              "option": "Villa del Plata",
+              "texts": [
+                "Plata",
+                "V. del Plata",
+                "Plata Bs.As.",
+                "VillaPlata"
+              ]
+            },
+            {
+              "option": "Villa España",
+              "texts": [
+                "España",
+                "V. España",
+                "España Bs.As.",
+                "VillaEspaña"
+              ]
+            },
+            {
+              "option": "Villa Felicia",
+              "texts": [
+                "Felicia",
+                "V. Felicia",
+                "Felicia Bs.As.",
+                "VillaFeli"
+              ]
+            },
+            {
+              "option": "Villa Gobernador Gálvez",
+              "texts": [
+                "G. Gálvez",
+                "Villa Gálvez",
+                "Gálvez Bs.As.",
+                "VillaGGalvez"
+              ]
+            },
+            {
+              "option": "Villa Hermosa",
+              "texts": [
+                "Hermosa",
+                "V. Hermosa",
+                "Hermosa Bs.As.",
+                "VillaHermosa"
+              ]
+            },
+            {
+              "option": "Villa Libertad",
+              "texts": [
+                "Libertad",
+                "V. Libertad",
+                "Libertad Bs.As.",
+                "VillaLiber"
+              ]
+            },
+            {
+              "option": "Villa Lynch",
+              "texts": [
+                "Lynch",
+                "V. Lynch",
+                "Lynch Bs.As.",
+                "VillaLynch"
+              ]
+            },
+            {
+              "option": "Villa Martelli",
+              "texts": [
+                "Martelli",
+                "V. Martelli",
+                "Martelli Bs.As.",
+                "VillaMartelli"
+              ]
+            },
+            {
+              "option": "Villa Modelo",
+              "texts": [
+                "Modelo",
+                "V. Modelo",
+                "Modelo Bs.As.",
+                "VillaModelo"
+              ]
+            },
+            {
+              "option": "Villa Muñiz",
+              "texts": [
+                "Muñiz",
+                "V. Muñiz",
+                "Muniz",
+                "VillaMuniz"
+              ]
+            },
+            {
+              "option": "Villa Obrera",
+              "texts": [
+                "Obrera",
+                "V. Obrera",
+                "Obrera Bs.As.",
+                "VillaObrera"
+              ]
+            },
+            {
+              "option": "Villa Progreso",
+              "texts": [
+                "Progreso",
+                "V. Progreso",
+                "Progreso Bs.As.",
+                "VillaProgre"
+              ]
+            },
+            {
+              "option": "Villa Raffo",
+              "texts": [
+                "Raffo",
+                "V. Raffo",
+                "Raffo Bs.As.",
+                "VillaRaffo"
+              ]
+            },
+            {
+              "option": "Villa Reconquista",
+              "texts": [
+                "Reconquista",
+                "V. Reconquista",
+                "Reconquista Bs.As.",
+                "VillaRecon"
+              ]
+            },
+            {
+              "option": "Villa Sarmiento",
+              "texts": [
+                "Sarmiento",
+                "V. Sarmiento",
+                "Sarmiento Bs.As.",
+                "VillaSarmiento"
+              ]
+            },
+            {
+              "option": "Villa Tesei",
+              "texts": [
+                "Tesei",
+                "V. Tesei",
+                "Tesei Bs.As.",
+                "VillaTesei"
+              ]
+            },
+            {
+              "option": "Villa Udaondo",
+              "texts": [
+                "Udaondo",
+                "V. Udaondo",
+                "Udaondo Bs.As.",
+                "VillaUdaondo"
+              ]
+            },
+            {
+              "option": "Villa Yapeyú",
+              "texts": [
+                "Yapeyú",
+                "V. Yapeyú",
+                "Yapeyu",
+                "VillaYapeyu"
+              ]
+            },
+            {
+              "option": "Villa Zagala",
+              "texts": [
+                "Zagala",
+                "V. Zagala",
+                "Zagala Bs.As.",
+                "VillaZagala"
+              ]
+            },
+            {
+              "option": "Villa Zavaleta",
+              "texts": [
+                "Zavaleta",
+                "V. Zavaleta",
+                "Zavaleta Bs.As.",
+                "VillaZavala"
+              ]
+            },
+            {
+              "option": "Villa Zula",
+              "texts": [
+                "Zula",
+                "V. Zula",
+                "Zula Bs.As.",
+                "VillaZula"
+              ]
+            },
+            {
+              "option": "Virrey del Pino",
+              "texts": [
+                "birrey del pino",
+                "los km",
+                "virrey del pino"
+              ]
+            },
+            {
+              "option": "Wilde",
+              "texts": [
+                "Wilde",
+                "Wilde Avellaneda",
+                "Wild",
+                "Vilde"
+              ]
+            }
+          ]
+        },
+        "nombres": {
+          "name": "nombres",
+          "type": "enum",
+          "rules": [
+            {
+              "option": "Carolina",
+              "texts": [
+                "caro",
+                "caroulin",
+                "carolina"
+              ]
+            },
+            {
+              "option": "Nicol",
+              "texts": [
+                "nicki",
+                "nikki",
+                "niki"
+              ]
+            },
+            {
+              "option": "Martina",
+              "texts": [
+                "martu"
+              ]
+            },
+            {
+              "option": "Benjamín",
+              "texts": [
+                "benja"
+              ]
+            },
+            {
+              "option": "Luciano",
+              "texts": [
+                "lucho"
+              ]
+            },
+            {
+              "option": "Agustín",
+              "texts": [
+                "agus"
+              ]
+            },
+            {
+              "option": "Oscar",
+              "texts": [
+                "oski"
+              ]
+            },
+            {
+              "option": "Adriana",
+              "texts": [
+                "adri"
+              ]
+            },
+            {
+              "option": "Lautaro",
+              "texts": [
+                "lauti",
+                "taro"
+              ]
+            },
+            {
+              "option": "Brian",
+              "texts": [
+                "bri",
+                "briancho"
+              ]
+            },
+            {
+              "option": "Brayan",
+              "texts": [
+                "bray",
+                "brayanton",
+                "brayi"
+              ]
+            },
+            {
+              "option": "Brenda",
+              "texts": [
+                "bren",
+                "brendi"
+              ]
+            },
+            {
+              "option": "Axel",
+              "texts": [
+                "axe",
+                "ax"
+              ]
+            },
+            {
+              "option": "Micaela",
+              "texts": [
+                "mica",
+                "miki"
+              ]
+            },
+            {
+              "option": "Delfina",
+              "texts": [
+                "delfi",
+                "fina"
+              ]
+            },
+            {
+              "option": "Lucas",
+              "texts": [
+                "lucas",
+                "luquitas"
+              ]
+            },
+            {
+              "option": "Gustavo",
+              "texts": [
+                "tavo",
+                "gus"
+              ]
+            },
+            {
+              "option": "Alan",
+              "texts": [
+                "alancito",
+                "alancho"
+              ]
+            },
+            {
+              "option": "Ariel",
+              "texts": [
+                "ari",
+                "arielito"
+              ]
+            },
+            {
+              "option": "Omar",
+              "texts": [
+                "omarcito",
+                "omarito"
+              ]
+            },
+            {
+              "option": "Romina",
+              "texts": [
+                "romi",
+                "rominita"
+              ]
+            },
+            {
+              "option": "Susana",
+              "texts": [
+                "susi",
+                "susanita"
+              ]
+            },
+            {
+              "option": "Candelaria",
+              "texts": [
+                "cande",
+                "candela"
+              ]
+            },
+            {
+              "option": "Simón",
+              "texts": [
+                "simoncito",
+                "simi"
+              ]
+            },
+            {
+              "option": "Damián",
+              "texts": [
+                "dami",
+                "dame"
+              ]
+            },
+            {
+              "option": "Néstor",
+              "texts": [
+                "nes",
+                "nestorcito"
+              ]
+            },
+            {
+              "option": "Hernán",
+              "texts": [
+                "nano",
+                "her"
+              ]
+            },
+            {
+              "option": "Luciana",
+              "texts": [
+                "luchu",
+                "luchita"
+              ]
+            },
+            {
+              "option": "Abril",
+              "texts": [
+                "abri",
+                "abrilita"
+              ]
+            },
+            {
+              "option": "Antonella",
+              "texts": [
+                "antona",
+                "antonella"
+              ]
+            },
+            {
+              "option": "Milagros",
+              "texts": [
+                "mili",
+                "milas"
+              ]
+            },
+            {
+              "option": "Yamila",
+              "texts": [
+                "yami",
+                "yamila"
+              ]
+            },
+            {
+              "option": "Melina",
+              "texts": [
+                "meli",
+                "mel"
+              ]
+            },
+            {
+              "option": "Aldana",
+              "texts": [
+                "aldanita",
+                "dana"
+              ]
+            },
+            {
+              "option": "Celeste",
+              "texts": [
+                "cele",
+                "celes"
+              ]
+            },
+            {
+              "option": "Érica",
+              "texts": [
+                "eri",
+                "eric"
+              ]
+            },
+            {
+              "option": "Samanta",
+              "texts": [
+                "sami",
+                "sam"
+              ]
+            },
+            {
+              "option": "Tamara",
+              "texts": [
+                "tami",
+                "tam"
+              ]
+            },
+            {
+              "option": "Gino",
+              "texts": [
+                "ginito",
+                "gi"
+              ]
+            },
+            {
+              "option": "Ciro",
+              "texts": [
+                "ciru",
+                "cirilo"
+              ]
+            },
+            {
+              "option": "Mario",
+              "texts": [
+                "marito",
+                "mari"
+              ]
+            },
+            {
+              "option": "Cristóbal",
+              "texts": [
+                "cris",
+                "cristo"
+              ]
+            },
+            {
+              "option": "Gregorio",
+              "texts": [
+                "grego",
+                "goyo"
+              ]
+            },
+            {
+              "option": "Dante",
+              "texts": [
+                "danti",
+                "dantecito"
+              ]
+            },
+            {
+              "option": "Ismael",
+              "texts": [
+                "isma",
+                "ismi"
+              ]
+            },
+            {
+              "option": "Baltasar",
+              "texts": [
+                "baltas",
+                "balti"
+              ]
+            },
+            {
+              "option": "Lorenzo",
+              "texts": [
+                "lenzo",
+                "loren"
+              ]
+            },
+            {
+              "option": "William",
+              "texts": [
+                "willi",
+                "wuilli",
+                "wlli"
+              ]
+            },
+            {
+              "option": "Willian",
+              "texts": [
+                "williannn"
+              ]
+            },
+            {
+              "option": "Wiliam",
+              "texts": [
+                "wili",
+                "wuili"
+              ]
+            },
+            {
+              "option": "Wilian",
+              "texts": [
+                "wiliann"
+              ]
+            },
+            {
+              "option": "Aldo",
+              "texts": [
+                "aldito",
+                "aldín"
+              ]
+            },
+            {
+              "option": "Amador",
+              "texts": [
+                "amad",
+                "amadorcito"
+              ]
+            },
+            {
+              "option": "Aníbal",
+              "texts": [
+                "aní",
+                "balito"
+              ]
+            },
+            {
+              "option": "Armando",
+              "texts": [
+                "arman",
+                "mandito"
+              ]
+            },
+            {
+              "option": "Azucena",
+              "texts": [
+                "azus",
+                "cena"
+              ]
+            },
+            {
+              "option": "Amparo",
+              "texts": [
+                "ampa",
+                "paro"
+              ]
+            },
+            {
+              "option": "Asunción",
+              "texts": [
+                "asun",
+                "chon"
+              ]
+            },
+            {
+              "option": "Aroa",
+              "texts": [
+                "aro",
+                "aroa"
+              ]
+            },
+            {
+              "option": "Aina",
+              "texts": [
+                "aini",
+                "ainita"
+              ]
+            },
+            {
+              "option": "Abigaíl",
+              "texts": [
+                "abi",
+                "abigail"
+              ]
+            },
+            {
+              "option": "Adrián",
+              "texts": [
+                "adri",
+                "rian"
+              ]
+            },
+            {
+              "option": "Alba",
+              "texts": [
+                "albi",
+                "albita"
+              ]
+            },
+            {
+              "option": "Alberto",
+              "texts": [
+                "beto",
+                "alber"
+              ]
+            },
+            {
+              "option": "Alejandra",
+              "texts": [
+                "ale",
+                "jandra"
+              ]
+            },
+            {
+              "option": "Alejandro",
+              "texts": [
+                "jandro",
+                "alex"
+              ]
+            },
+            {
+              "option": "Alicia",
+              "texts": [
+                "lici",
+                "licha"
+              ]
+            },
+            {
+              "option": "Alonso",
+              "texts": [
+                "onso",
+                "alonsito"
+              ]
+            },
+            {
+              "option": "Amalia",
+              "texts": [
+                "mali",
+                "amalita"
+              ]
+            },
+            {
+              "option": "Ana",
+              "texts": [
+                "anita",
+                "ani"
+              ]
+            },
+            {
+              "option": "Andrés",
+              "texts": [
+                "andy",
+                "dres"
+              ]
+            },
+            {
+              "option": "André",
+              "texts": [
+                "andreh",
+                "andre"
+              ]
+            },
+            {
+              "option": "Ángel",
+              "texts": [
+                "angelito",
+                "gel",
+                "angel"
+              ]
+            },
+            {
+              "option": "Antonia",
+              "texts": [
+                "toni",
+                "tonita"
+              ]
+            },
+            {
+              "option": "Antonio",
+              "texts": [
+                "tonio",
+                "toño"
+              ]
+            },
+            {
+              "option": "Araceli",
+              "texts": [
+                "ara",
+                "celi"
+              ]
+            },
+            {
+              "option": "Arturo",
+              "texts": [
+                "turo",
+                "arturito"
+              ]
+            },
+            {
+              "option": "Aurora",
+              "texts": [
+                "auro",
+                "rora"
+              ]
+            },
+            {
+              "option": "Amadeo",
+              "texts": [
+                "amade",
+                "deo"
+              ]
+            },
+            {
+              "option": "Aarón",
+              "texts": [
+                "aroncito",
+                "aaron"
+              ]
+            },
+            {
+              "option": "Agostina",
+              "texts": [
+                "agos",
+                "tina"
+              ]
+            },
+            {
+              "option": "Anabel",
+              "texts": [
+                "ana",
+                "bel"
+              ]
+            },
+            {
+              "option": "Annabel",
+              "texts": [
+                "anna"
+              ]
+            },
+            {
+              "option": "Anacleto",
+              "texts": [
+                "cleto",
+                "anac"
+              ]
+            },
+            {
+              "option": "Arnaldo",
+              "texts": [
+                "arna",
+                "naldo"
+              ]
+            },
+            {
+              "option": "Arnold",
+              "texts": [
+                "Arni",
+                "arnol"
+              ]
+            },
+            {
+              "option": "Beatriz",
+              "texts": [
+                "bea",
+                "triz"
+              ]
+            },
+            {
+              "option": "Berta",
+              "texts": [
+                "berti",
+                "bertita"
+              ]
+            },
+            {
+              "option": "Blanca",
+              "texts": [
+                "blanqui",
+                "blanquita"
+              ]
+            },
+            {
+              "option": "Bruno",
+              "texts": [
+                "bru",
+                "brunito"
+              ]
+            },
+            {
+              "option": "Bárbara",
+              "texts": [
+                "barbi",
+                "barbarita"
+              ]
+            },
+            {
+              "option": "Bayron",
+              "texts": [
+                "Bay"
+              ]
+            },
+            {
+              "option": "Bairon",
+              "texts": [
+                "Bairon"
+              ]
+            },
+            {
+              "option": "Belén",
+              "texts": [
+                "bele",
+                "belu"
+              ]
+            },
+            {
+              "option": "Benito",
+              "texts": [
+                "beni",
+                "bencho"
+              ]
+            },
+            {
+              "option": "Bernardino",
+              "texts": [
+                "bernard",
+                "dino"
+              ]
+            },
+            {
+              "option": "Bautista",
+              "texts": [
+                "bauti",
+                "taista"
+              ]
+            },
+            {
+              "option": "Brigida",
+              "texts": [
+                "brigi",
+                "gida"
+              ]
+            },
+            {
+              "option": "Blas",
+              "texts": [
+                "blasito",
+                "blasi"
+              ]
+            },
+            {
+              "option": "Basilio",
+              "texts": [
+                "basi",
+                "silio"
+              ]
+            },
+            {
+              "option": "Bernardo",
+              "texts": [
+                "berna",
+                "nardito"
+              ]
+            },
+            {
+              "option": "Benicio",
+              "texts": [
+                "beni",
+                "nicio"
+              ]
+            },
+            {
+              "option": "Brandon",
+              "texts": [
+                "bran",
+                "brandin"
+              ]
+            },
+            {
+              "option": "Candelario",
+              "texts": [
+                "lario"
+              ]
+            },
+            {
+              "option": "Candela",
+              "texts": [
+                "cande"
+              ]
+            },
+            {
+              "option": "Claudio",
+              "texts": [
+                "clau",
+                "claudito"
+              ]
+            },
+            {
+              "option": "Camila",
+              "texts": [
+                "cami",
+                "mila"
+              ]
+            },
+            {
+              "option": "Carlos",
+              "texts": [
+                "carlitos",
+                "charli"
+              ]
+            },
+            {
+              "option": "Carmen",
+              "texts": [
+                "carmencita",
+                "menchu"
+              ]
+            },
+            {
+              "option": "Carola",
+              "texts": [
+                "carol"
+              ]
+            },
+            {
+              "option": "Carla",
+              "texts": [
+                "car",
+                "carli"
+              ]
+            },
+            {
+              "option": "Camilo",
+              "texts": [
+                "milo"
+              ]
+            },
+            {
+              "option": "Catalina",
+              "texts": [
+                "cata",
+                "catali"
+              ]
+            },
+            {
+              "option": "Cecilia",
+              "texts": [
+                "ceci",
+                "cecita"
+              ]
+            },
+            {
+              "option": "Celia",
+              "texts": [
+                "celi",
+                "celita"
+              ]
+            },
+            {
+              "option": "Clara",
+              "texts": [
+                "clari",
+                "clarita"
+              ]
+            },
+            {
+              "option": "Claudia",
+              "texts": [
+                "clau",
+                "claudita"
+              ]
+            },
+            {
+              "option": "Concepción",
+              "texts": [
+                "conchi",
+                "conchita"
+              ]
+            },
+            {
+              "option": "Cristina",
+              "texts": [
+                "cristina"
+              ]
+            },
+            {
+              "option": "Cristian",
+              "texts": [
+                "cristian"
+              ]
+            },
+            {
+              "option": "Cristofer",
+              "texts": [
+                "Cristof",
+                "Cristo"
+              ]
+            },
+            {
+              "option": "César",
+              "texts": [
+                "cesarito",
+                "sesa"
+              ]
+            },
+            {
+              "option": "Cirilo",
+              "texts": [
+                "ciri",
+                "rilo"
+              ]
+            },
+            {
+              "option": "Crisanto",
+              "texts": [
+                "crisan",
+                "santo"
+              ]
+            },
+            {
+              "option": "Cruz",
+              "texts": [
+                "crucita",
+                "cruzi"
+              ]
+            },
+            {
+              "option": "Celestino",
+              "texts": [
+                "celes",
+                "tino"
+              ]
+            },
+            {
+              "option": "Clemente",
+              "texts": [
+                "clemen",
+                "mento"
+              ]
+            },
+            {
+              "option": "Consuelo",
+              "texts": [
+                "consu",
+                "suelo"
+              ]
+            },
+            {
+              "option": "Dacio",
+              "texts": [
+                "dacito",
+                "daci"
+              ]
+            },
+            {
+              "option": "Dámaso",
+              "texts": [
+                "dama",
+                "masito"
+              ]
+            },
+            {
+              "option": "Demetrio",
+              "texts": [
+                "deme",
+                "metrio"
+              ]
+            },
+            {
+              "option": "Donato",
+              "texts": [
+                "don",
+                "donatito"
+              ]
+            },
+            {
+              "option": "Dorotea",
+              "texts": [
+                "doro",
+                "teita"
+              ]
+            },
+            {
+              "option": "Daniel",
+              "texts": [
+                "dan",
+                "danielito"
+              ]
+            },
+            {
+              "option": "Dayana",
+              "texts": [
+                "daya"
+              ]
+            },
+            {
+              "option": "Dayara",
+              "texts": [
+                "dayar"
+              ]
+            },
+            {
+              "option": "Dayra",
+              "texts": [
+                "day"
+              ]
+            },
+            {
+              "option": "Daira",
+              "texts": [
+                "dai"
+              ]
+            },
+            {
+              "option": "Daiana",
+              "texts": [
+                "daiana",
+                "daianita"
+              ]
+            },
+            {
+              "option": "Daniela",
+              "texts": [
+                "dani",
+                "danita"
+              ]
+            },
+            {
+              "option": "David",
+              "texts": [
+                "davi",
+                "davidcito"
+              ]
+            },
+            {
+              "option": "Diana",
+              "texts": [
+                "didi",
+                "dianita"
+              ]
+            },
+            {
+              "option": "Diego",
+              "texts": [
+                "dieguito",
+                "diegote"
+              ]
+            },
+            {
+              "option": "Dolores",
+              "texts": [
+                "lola",
+                "lolita"
+              ]
+            },
+            {
+              "option": "Damian",
+              "texts": [
+                "Dami",
+                "Damiansito"
+              ]
+            },
+            {
+              "option": "Dardo",
+              "texts": [
+                "dardi",
+                "dardito"
+              ]
+            },
+            {
+              "option": "Débora",
+              "texts": [
+                "debi",
+                "bora"
+              ]
+            },
+            {
+              "option": "Diamela",
+              "texts": [
+                "diame",
+                "mela"
+              ]
+            },
+            {
+              "option": "Dionisio",
+              "texts": [
+                "dioni",
+                "nisio"
+              ]
+            },
+            {
+              "option": "Dorila",
+              "texts": [
+                "dori",
+                "rila"
+              ]
+            },
+            {
+              "option": "Edgar",
+              "texts": [
+                "ed",
+                "edgarcito"
+              ]
+            },
+            {
+              "option": "Elena",
+              "texts": [
+                "elenita",
+                "lele"
+              ]
+            },
+            {
+              "option": "Eliana",
+              "texts": [
+                "eli",
+                "eliana"
+              ]
+            },
+            {
+              "option": "Elsa",
+              "texts": [
+                "elsita",
+                "elsi"
+              ]
+            },
+            {
+              "option": "Emilia",
+              "texts": [
+                "emi",
+                "emilita"
+              ]
+            },
+            {
+              "option": "Enrique",
+              "texts": [
+                "quique",
+                "enri"
+              ]
+            },
+            {
+              "option": "Ernesto",
+              "texts": [
+                "neto",
+                "ernestito"
+              ]
+            },
+            {
+              "option": "Esperanza",
+              "texts": [
+                "esper",
+                "pera"
+              ]
+            },
+            {
+              "option": "Esteban",
+              "texts": [
+                "este",
+                "teban"
+              ]
+            },
+            {
+              "option": "Eva",
+              "texts": [
+                "evita",
+                "evi"
+              ]
+            },
+            {
+              "option": "Emiliano",
+              "texts": [
+                "emi",
+                "miliano"
+              ]
+            },
+            {
+              "option": "Enzo",
+              "texts": [
+                "enzito",
+                "enzo"
+              ]
+            },
+            {
+              "option": "Ezequiel",
+              "texts": [
+                "eze",
+                "zeke"
+              ]
+            },
+            {
+              "option": "Elías",
+              "texts": [
+                "eliasito",
+                "elias"
+              ]
+            },
+            {
+              "option": "Eduardo",
+              "texts": [
+                "eddie",
+                "lalo"
+              ]
+            },
+            {
+              "option": "Emanuel",
+              "texts": [
+                "manu",
+                "ema"
+              ]
+            },
+            {
+              "option": "Efraín",
+              "texts": [
+                "efra",
+                "frai"
+              ]
+            },
+            {
+              "option": "Eladio",
+              "texts": [
+                "elad",
+                "ladio"
+              ]
+            },
+            {
+              "option": "Fabián",
+              "texts": [
+                "fabi",
+                "fabo"
+              ]
+            },
+            {
+              "option": "Fabiola",
+              "texts": [
+                "fabi",
+                "fiola"
+              ]
+            },
+            {
+              "option": "Federico",
+              "texts": [
+                "fede",
+                "federi"
+              ]
+            },
+            {
+              "option": "Felipe",
+              "texts": [
+                "feli",
+                "pipe"
+              ]
+            },
+            {
+              "option": "Fernanda",
+              "texts": [
+                "fer",
+                "nanda"
+              ]
+            },
+            {
+              "option": "Fernando",
+              "texts": [
+                "fer",
+                "nando"
+              ]
+            },
+            {
+              "option": "Francisco",
+              "texts": [
+                "paco",
+                "pancho"
+              ]
+            },
+            {
+              "option": "Francisca",
+              "texts": [
+                "franci",
+                "cisca"
+              ]
+            },
+            {
+              "option": "Florencia",
+              "texts": [
+                "flore",
+                "floren"
+              ]
+            },
+            {
+              "option": "Flor",
+              "texts": [
+                "florsi",
+                "flr",
+                "for"
+              ]
+            },
+            {
+              "option": "Facundo",
+              "texts": [
+                "facu",
+                "facus"
+              ]
+            },
+            {
+              "option": "Fermín",
+              "texts": [
+                "fermi",
+                "mincho"
+              ]
+            },
+            {
+              "option": "Fidel",
+              "texts": [
+                "fidelito",
+                "fide"
+              ]
+            },
+            {
+              "option": "Florencio",
+              "texts": [
+                "flor",
+                "rencio"
+              ]
+            },
+            {
+              "option": "Franco",
+              "texts": [
+                "fran",
+                "franquito",
+                "fran",
+                "franky",
+                "franki"
+              ]
+            },
+            {
+              "option": "Fabricio",
+              "texts": [
+                "fabri",
+                "fabro"
+              ]
+            },
+            {
+              "option": "Fausto",
+              "texts": [
+                "faus",
+                "faustito"
+              ]
+            },
+            {
+              "option": "Gabriel",
+              "texts": [
+                "gabo",
+                "gabrielito"
+              ]
+            },
+            {
+              "option": "Gabriela",
+              "texts": [
+                "gabi",
+                "gabita"
+              ]
+            },
+            {
+              "option": "Gerardo",
+              "texts": [
+                "gera",
+                "gerry"
+              ]
+            },
+            {
+              "option": "Germán",
+              "texts": [
+                "germanito",
+                "manín"
+              ]
+            },
+            {
+              "option": "Gloria",
+              "texts": [
+                "glori",
+                "glorita"
+              ]
+            },
+            {
+              "option": "Gonzalo",
+              "texts": [
+                "gonza",
+                "gonzalo"
+              ]
+            },
+            {
+              "option": "Guadalupe",
+              "texts": [
+                "lupe",
+                "lupita"
+              ]
+            },
+            {
+              "option": "Guillermo",
+              "texts": [
+                "memo",
+                "guille",
+                "guillermito",
+                "gille",
+                "guille"
+              ]
+            },
+            {
+              "option": "Héctor",
+              "texts": [
+                "hectorcito",
+                "tor",
+                "hector",
+                "ector"
+              ]
+            },
+            {
+              "option": "Helena",
+              "texts": [
+                "helenita",
+                "lena"
+              ]
+            },
+            {
+              "option": "Horacio",
+              "texts": [
+                "hora",
+                "racio"
+              ]
+            },
+            {
+              "option": "Hugo",
+              "texts": [
+                "huguito",
+                "hugón"
+              ]
+            },
+            {
+              "option": "Ignacio",
+              "texts": [
+                "nacho",
+                "ignacio"
+              ]
+            },
+            {
+              "option": "Iker",
+              "texts": [
+                "ike",
+                "ikerito"
+              ]
+            },
+            {
+              "option": "Inés",
+              "texts": [
+                "inesita",
+                "nesi"
+              ]
+            },
+            {
+              "option": "Irene",
+              "texts": [
+                "ire",
+                "irenita"
+              ]
+            },
+            {
+              "option": "Isabel",
+              "texts": [
+                "isa",
+                "bel"
+              ]
+            },
+            {
+              "option": "Isabella",
+              "texts": [
+                "bella",
+                "isa"
+              ]
+            },
+            {
+              "option": "Israel",
+              "texts": [
+                "isra",
+                "rael"
+              ]
+            },
+            {
+              "option": "Iván",
+              "texts": [
+                "ivancito",
+                "ivancho"
+              ]
+            },
+            {
+              "option": "Inocencio",
+              "texts": [
+                "inocen",
+                "cencio"
+              ]
+            },
+            {
+              "option": "Indalecio",
+              "texts": [
+                "inda",
+                "lecio"
+              ]
+            },
+            {
+              "option": "Irineo",
+              "texts": [
+                "iri",
+                "rineo"
+              ]
+            },
+            {
+              "option": "Isidro",
+              "texts": [
+                "isi",
+                "sidro"
+              ]
+            },
+            {
+              "option": "Ivo",
+              "texts": [
+                "ivito",
+                "ivón"
+              ]
+            },
+            {
+              "option": "Isaías",
+              "texts": [
+                "Isaí",
+                "Saías"
+              ]
+            },
+            {
+              "option": "Jacinto",
+              "texts": [
+                "cinto",
+                "jacincito"
+              ]
+            },
+            {
+              "option": "Javier",
+              "texts": [
+                "javi",
+                "javo"
+              ]
+            },
+            {
+              "option": "Jimena",
+              "texts": [
+                "jime",
+                "mena"
+              ]
+            },
+            {
+              "option": "Joaquín",
+              "texts": [
+                "joaco",
+                "quin"
+              ]
+            },
+            {
+              "option": "Jorge",
+              "texts": [
+                "jor",
+                "georgie"
+              ]
+            },
+            {
+              "option": "José",
+              "texts": [
+                "pepe",
+                "joselito"
+              ]
+            },
+            {
+              "option": "Josué",
+              "texts": [
+                "josu",
+                "sue"
+              ]
+            },
+            {
+              "option": "Juan",
+              "texts": [
+                "juancito",
+                "juancho",
+                "juan"
+              ]
+            },
+            {
+              "option": "Juana",
+              "texts": [
+                "juana",
+                "juanita"
+              ]
+            },
+            {
+              "option": "Julia",
+              "texts": [
+                "juli",
+                "julita"
+              ]
+            },
+            {
+              "option": "Julio",
+              "texts": [
+                "julito",
+                "julión"
+              ]
+            },
+            {
+              "option": "Justo",
+              "texts": [
+                "justito",
+                "tito"
+              ]
+            },
+            {
+              "option": "Jeremías",
+              "texts": [
+                "jere",
+                "mías"
+              ]
+            },
+            {
+              "option": "Jesús",
+              "texts": [
+                "jesu",
+                "chus"
+              ]
+            },
+            {
+              "option": "Jonás",
+              "texts": [
+                "joni",
+                "jonasito"
+              ]
+            },
+            {
+              "option": "Karen",
+              "texts": [
+                "kari",
+                "karencita"
+              ]
+            },
+            {
+              "option": "Kevin",
+              "texts": [
+                "kev",
+                "kevito"
+              ]
+            },
+            {
+              "option": "Karola",
+              "texts": [
+                "karola"
+              ]
+            },
+            {
+              "option": "Karol",
+              "texts": [
+                "karol"
+              ]
+            },
+            {
+              "option": "Laura",
+              "texts": [
+                "lauri",
+                "laurita"
+              ]
+            },
+            {
+              "option": "Leonardo",
+              "texts": [
+                "leo",
+                "leonardito"
+              ]
+            },
+            {
+              "option": "Leticia",
+              "texts": [
+                "leti",
+                "letic"
+              ]
+            },
+            {
+              "option": "Lidia",
+              "texts": [
+                "lidi",
+                "lidita"
+              ]
+            },
+            {
+              "option": "Liliana",
+              "texts": [
+                "lili",
+                "lilianita"
+              ]
+            },
+            {
+              "option": "Lorena",
+              "texts": [
+                "lore",
+                "lorenita"
+              ]
+            },
+            {
+              "option": "Lourdes",
+              "texts": [
+                "lourditas",
+                "lulú"
+              ]
+            },
+            {
+              "option": "Lucía",
+              "texts": [
+                "luci",
+                "lucita"
+              ]
+            },
+            {
+              "option": "Luis",
+              "texts": [
+                "lucho",
+                "luisito"
+              ]
+            },
+            {
+              "option": "Luisa",
+              "texts": [
+                "lui",
+                "luisita"
+              ]
+            },
+            {
+              "option": "Leandro",
+              "texts": [
+                "lean",
+                "drito"
+              ]
+            },
+            {
+              "option": "Lionel",
+              "texts": [
+                "lion",
+                "lio"
+              ]
+            },
+            {
+              "option": "Lisandro",
+              "texts": [
+                "lisan",
+                "sandrito"
+              ]
+            },
+            {
+              "option": "Lázaro",
+              "texts": [
+                "laza",
+                "zarito"
+              ]
+            },
+            {
+              "option": "Ludovico",
+              "texts": [
+                "ludo",
+                "vico"
+              ]
+            },
+            {
+              "option": "Marco",
+              "texts": [
+                "marquito",
+                "marcol"
+              ]
+            },
+            {
+              "option": "Margarita",
+              "texts": [
+                "marga",
+                "margarit"
+              ]
+            },
+            {
+              "option": "María",
+              "texts": [
+                "marita",
+                "mari"
+              ]
+            },
+            {
+              "option": "Marta",
+              "texts": [
+                "martita",
+                "marti"
+              ]
+            },
+            {
+              "option": "Mauricio",
+              "texts": [
+                "mau",
+                "mauris"
+              ]
+            },
+            {
+              "option": "Maximiliano",
+              "texts": [
+                "max",
+                "maxi"
+              ]
+            },
+            {
+              "option": "Mercedes",
+              "texts": [
+                "meche",
+                "merche"
+              ]
+            },
+            {
+              "option": "Mónica",
+              "texts": [
+                "moni",
+                "moniquita"
+              ]
+            },
+            {
+              "option": "Mateo",
+              "texts": [
+                "mate",
+                "teo"
+              ]
+            },
+            {
+              "option": "Matías",
+              "texts": [
+                "mati",
+                "tías"
+              ]
+            },
+            {
+              "option": "Martín",
+              "texts": [
+                "tin",
+                "martincito"
+              ]
+            },
+            {
+              "option": "Máximo",
+              "texts": [
+                "maxi",
+                "max"
+              ]
+            },
+            {
+              "option": "Marcos",
+              "texts": [
+                "marquitos",
+                "marcol"
+              ]
+            },
+            {
+              "option": "Manuel",
+              "texts": [
+                "manu",
+                "manuelito"
+              ]
+            },
+            {
+              "option": "Mauro",
+              "texts": [
+                "mauri",
+                "maurito"
+              ]
+            },
+            {
+              "option": "Mariano",
+              "texts": [
+                "marian",
+                "riano"
+              ]
+            },
+            {
+              "option": "Miguel",
+              "texts": [
+                "migue",
+                "miguelito"
+              ]
+            },
+            {
+              "option": "Marcelo",
+              "texts": [
+                "chelito",
+                "marce"
+              ]
+            },
+            {
+              "option": "Nadia",
+              "texts": [
+                "nadi",
+                "nadia"
+              ]
+            },
+            {
+              "option": "Natalia",
+              "texts": [
+                "nata",
+                "talita"
+              ]
+            },
+            {
+              "option": "Nicolás",
+              "texts": [
+                "nico",
+                "nicolasito"
+              ]
+            },
+            {
+              "option": "Noelia",
+              "texts": [
+                "noe",
+                "noelita"
+              ]
+            },
+            {
+              "option": "Nora",
+              "texts": [
+                "norita",
+                "nori"
+              ]
+            },
+            {
+              "option": "Octavio",
+              "texts": [
+                "octa",
+                "tavio"
+              ]
+            },
+            {
+              "option": "Olga",
+              "texts": [
+                "olguita",
+                "olgi"
+              ]
+            },
+            {
+              "option": "Óscar",
+              "texts": [
+                "oski",
+                "oscarcito"
+              ]
+            },
+            {
+              "option": "Osvaldo",
+              "texts": [
+                "osva",
+                "valdo"
+              ]
+            },
+            {
+              "option": "Pablo",
+              "texts": [
+                "pablito",
+                "pablete"
+              ]
+            },
+            {
+              "option": "Patricia",
+              "texts": [
+                "patri",
+                "paty"
+              ]
+            },
+            {
+              "option": "Patricio",
+              "texts": [
+                "pato",
+                "patrio"
+              ]
+            },
+            {
+              "option": "Paula",
+              "texts": [
+                "pau",
+                "paulita"
+              ]
+            },
+            {
+              "option": "Pedro",
+              "texts": [
+                "pedrito",
+                "perico",
+                "pedro"
+              ]
+            },
+            {
+              "option": "Pilar",
+              "texts": [
+                "pili",
+                "pilarcita"
+              ]
+            },
+            {
+              "option": "Rafael",
+              "texts": [
+                "rafa",
+                "rafaelito"
+              ]
+            },
+            {
+              "option": "Ramón",
+              "texts": [
+                "moncho",
+                "ramoncito"
+              ]
+            },
+            {
+              "option": "Raquel",
+              "texts": [
+                "raque",
+                "quel"
+              ]
+            },
+            {
+              "option": "Rebeca",
+              "texts": [
+                "rebe",
+                "beca"
+              ]
+            },
+            {
+              "option": "Renata",
+              "texts": [
+                "ren",
+                "nata"
+              ]
+            },
+            {
+              "option": "Ricardo",
+              "texts": [
+                "richi",
+                "riky"
+              ]
+            },
+            {
+              "option": "Roberto",
+              "texts": [
+                "beto",
+                "robert"
+              ]
+            },
+            {
+              "option": "Rodrigo",
+              "texts": [
+                "rodri",
+                "ro"
+              ]
+            },
+            {
+              "option": "Rocío",
+              "texts": [
+                "ro",
+                "roci"
+              ]
+            },
+            {
+              "option": "Rosa",
+              "texts": [
+                "rosi",
+                "rosita"
+              ]
+            },
+            {
+              "option": "Rosario",
+              "texts": [
+                "charo",
+                "chari"
+              ]
+            },
+            {
+              "option": "Rubén",
+              "texts": [
+                "rubencito",
+                "rub"
+              ]
+            },
+            {
+              "option": "Renato",
+              "texts": [
+                "ren",
+                "nato"
+              ]
+            },
+            {
+              "option": "Ramiro",
+              "texts": [
+                "rami",
+                "ramirito"
+              ]
+            },
+            {
+              "option": "Raúl",
+              "texts": [
+                "raulito",
+                "rau"
+              ]
+            },
+            {
+              "option": "Rogelio",
+              "texts": [
+                "roge",
+                "rogel"
+              ]
+            },
+            {
+              "option": "Román",
+              "texts": [
+                "roman",
+                "romancito"
+              ]
+            },
+            {
+              "option": "Rufino",
+              "texts": [
+                "rufi",
+                "finito"
+              ]
+            },
+            {
+              "option": "Ruth",
+              "texts": [
+                "ruty",
+                "ruti",
+                "rut"
+              ]
+            },
+            {
+              "option": "Salvador",
+              "texts": [
+                "salva",
+                "chava"
+              ]
+            },
+            {
+              "option": "Samuel",
+              "texts": [
+                "samu",
+                "samuelito"
+              ]
+            },
+            {
+              "option": "Sandra",
+              "texts": [
+                "sandi",
+                "sandrita"
+              ]
+            },
+            {
+              "option": "Santiago",
+              "texts": [
+                "santi",
+                "yago"
+              ]
+            },
+            {
+              "option": "Sara",
+              "texts": [
+                "sarita",
+                "sari"
+              ]
+            },
+            {
+              "option": "Sebastián",
+              "texts": [
+                "seba",
+                "sebas"
+              ]
+            },
+            {
+              "option": "Serafín",
+              "texts": [
+                "sera",
+                "fino"
+              ]
+            },
+            {
+              "option": "Sergio",
+              "texts": [
+                "serch",
+                "sergito"
+              ]
+            },
+            {
+              "option": "Silvia",
+              "texts": [
+                "silvi",
+                "silvita"
+              ]
+            },
+            {
+              "option": "Sofía",
+              "texts": [
+                "sofi",
+                "sofis"
+              ]
+            },
+            {
+              "option": "Soledad",
+              "texts": [
+                "sole",
+                "soled"
+              ]
+            },
+            {
+              "option": "Santino",
+              "texts": [
+                "santi",
+                "santino"
+              ]
+            },
+            {
+              "option": "Silvio",
+              "texts": [
+                "silvi",
+                "silvito"
+              ]
+            },
+            {
+              "option": "Saúl",
+              "texts": [
+                "saulito",
+                "sauli"
+              ]
+            },
+            {
+              "option": "Santos",
+              "texts": [
+                "santitos",
+                "santos"
+              ]
+            },
+            {
+              "option": "Samira",
+              "texts": [
+                "sami"
+              ]
+            },
+            {
+              "option": "Sunilda",
+              "texts": [
+                "suni",
+                "suny",
+                "sunil"
+              ]
+            },
+            {
+              "option": "Teresa",
+              "texts": [
+                "tere",
+                "teresita"
+              ]
+            },
+            {
+              "option": "Timoteo",
+              "texts": [
+                "tim",
+                "teo"
+              ]
+            },
+            {
+              "option": "Tomás",
+              "texts": [
+                "tomi",
+                "tomasito"
+              ]
+            },
+            {
+              "option": "Trinidad",
+              "texts": [
+                "trini",
+                "nidad"
+              ]
+            },
+            {
+              "option": "Thiago",
+              "texts": [
+                "tiago",
+                "tiaguito"
+              ]
+            },
+            {
+              "option": "Teodoro",
+              "texts": [
+                "teo",
+                "doro"
+              ]
+            },
+            {
+              "option": "Tadeo",
+              "texts": [
+                "tade",
+                "tadito"
+              ]
+            },
+            {
+              "option": "Tobías",
+              "texts": [
+                "tobi",
+                "bías",
+                "tob"
+              ]
+            },
+            {
+              "option": "Tristán",
+              "texts": [
+                "tris",
+                "triste"
+              ]
+            },
+            {
+              "option": "Toribio",
+              "texts": [
+                "tori",
+                "bío"
+              ]
+            },
+            {
+              "option": "Tarsicio",
+              "texts": [
+                "tarso",
+                "sicio"
+              ]
+            },
+            {
+              "option": "Telmo",
+              "texts": [
+                "tel",
+                "telmito"
+              ]
+            },
+            {
+              "option": "Úrsula",
+              "texts": [
+                "ursi",
+                "urula"
+              ]
+            },
+            {
+              "option": "Uriel",
+              "texts": [
+                "uri",
+                "rielito"
+              ]
+            },
+            {
+              "option": "Urbano",
+              "texts": [
+                "urba",
+                "bano"
+              ]
+            },
+            {
+              "option": "Ubaldo",
+              "texts": [
+                "uba",
+                "baldo"
+              ]
+            },
+            {
+              "option": "Umberto",
+              "texts": [
+                "umber",
+                "bertito"
+              ]
+            },
+            {
+              "option": "Uziel",
+              "texts": [
+                "uzi",
+                "zielito"
+              ]
+            },
+            {
+              "option": "Ulrico",
+              "texts": [
+                "ulri",
+                "ricito"
+              ]
+            },
+            {
+              "option": "Ursino",
+              "texts": [
+                "ursi",
+                "sinito"
+              ]
+            },
+            {
+              "option": "Ulises",
+              "texts": [
+                "uli",
+                "ulisesito"
+              ]
+            },
+            {
+              "option": "Ulfrido",
+              "texts": [
+                "ulfri",
+                "frido"
+              ]
+            },
+            {
+              "option": "Valentín",
+              "texts": [
+                "valen",
+                "valent"
+              ]
+            },
+            {
+              "option": "Víctor",
+              "texts": [
+                "viti",
+                "victor"
+              ]
+            },
+            {
+              "option": "Vladimir",
+              "texts": [
+                "vladi",
+                "mir"
+              ]
+            },
+            {
+              "option": "Valerio",
+              "texts": [
+                "vale",
+                "lerio"
+              ]
+            },
+            {
+              "option": "Vasco",
+              "texts": [
+                "vasc",
+                "vascu"
+              ]
+            },
+            {
+              "option": "Víctor Hugo",
+              "texts": [
+                "vitu",
+                "huguito"
+              ]
+            },
+            {
+              "option": "Ventura",
+              "texts": [
+                "ventu",
+                "turita"
+              ]
+            },
+            {
+              "option": "Virgilio",
+              "texts": [
+                "virgi",
+                "gilio"
+              ]
+            },
+            {
+              "option": "Vito",
+              "texts": [
+                "vitito",
+                "vitón"
+              ]
+            },
+            {
+              "option": "Valentina",
+              "texts": [
+                "valen",
+                "valent"
+              ]
+            },
+            {
+              "option": "Valeria",
+              "texts": [
+                "vale",
+                "valerita"
+              ]
+            },
+            {
+              "option": "Vanesa",
+              "texts": [
+                "vane",
+                "vanesita",
+                "vanessa"
+              ]
+            },
+            {
+              "option": "Verónica",
+              "texts": [
+                "vero",
+                "verito"
+              ]
+            },
+            {
+              "option": "Vicente",
+              "texts": [
+                "vicho",
+                "vicen"
+              ]
+            },
+            {
+              "option": "Victoria",
+              "texts": [
+                "vicky",
+                "vic"
+              ]
+            },
+            {
+              "option": "Violeta",
+              "texts": [
+                "vio",
+                "violet"
+              ]
+            },
+            {
+              "option": "Walter",
+              "texts": [
+                "walt",
+                "waltito"
+              ]
+            },
+            {
+              "option": "Wendy",
+              "texts": [
+                "wen",
+                "wendyta"
+              ]
+            },
+            {
+              "option": "Wilfredo",
+              "texts": [
+                "wil",
+                "fredo"
+              ]
+            },
+            {
+              "option": "Waldemar",
+              "texts": [
+                "walde",
+                "demar"
+              ]
+            },
+            {
+              "option": "Wenceslao",
+              "texts": [
+                "wen",
+                "wencho"
+              ]
+            },
+            {
+              "option": "Winston",
+              "texts": [
+                "wins",
+                "stoni"
+              ]
+            },
+            {
+              "option": "Wilson",
+              "texts": [
+                "wils",
+                "soni"
+              ]
+            },
+            {
+              "option": "Wagner",
+              "texts": [
+                "wag",
+                "gnerito"
+              ]
+            },
+            {
+              "option": "Warren",
+              "texts": [
+                "war",
+                "rencito"
+              ]
+            },
+            {
+              "option": "Washington",
+              "texts": [
+                "wash",
+                "toni"
+              ]
+            },
+            {
+              "option": "Ximena",
+              "texts": [
+                "xime",
+                "mema"
+              ]
+            },
+            {
+              "option": "Xavier",
+              "texts": [
+                "xavi",
+                "xavito"
+              ]
+            },
+            {
+              "option": "Xenón",
+              "texts": [
+                "xeno",
+                "xenito"
+              ]
+            },
+            {
+              "option": "Xandro",
+              "texts": [
+                "xan",
+                "drito"
+              ]
+            },
+            {
+              "option": "Xulian",
+              "texts": [
+                "xuli",
+                "lian"
+              ]
+            },
+            {
+              "option": "Xerxes",
+              "texts": [
+                "xerx",
+                "xerxito"
+              ]
+            },
+            {
+              "option": "Xabier",
+              "texts": [
+                "xabi",
+                "bier"
+              ]
+            },
+            {
+              "option": "Xenio",
+              "texts": [
+                "xeni",
+                "nito"
+              ]
+            },
+            {
+              "option": "Ximun",
+              "texts": [
+                "ximu",
+                "mun"
+              ]
+            },
+            {
+              "option": "Xoel",
+              "texts": [
+                "xoe",
+                "xoelito"
+              ]
+            },
+            {
+              "option": "Xurxo",
+              "texts": [
+                "xur",
+                "xurxito"
+              ]
+            },
+            {
+              "option": "Yolanda",
+              "texts": [
+                "yoli",
+                "yolandita"
+              ]
+            },
+            {
+              "option": "Yvette",
+              "texts": [
+                "yve",
+                "yvettita"
+              ]
+            },
+            {
+              "option": "Yair",
+              "texts": [
+                "yai",
+                "yairito"
+              ]
+            },
+            {
+              "option": "Yeray",
+              "texts": [
+                "yer",
+                "rayito"
+              ]
+            },
+            {
+              "option": "Yamil",
+              "texts": [
+                "yami",
+                "mil"
+              ]
+            },
+            {
+              "option": "Yonatan",
+              "texts": [
+                "yona",
+                "tan"
+              ]
+            },
+            {
+              "option": "Yaco",
+              "texts": [
+                "yac",
+                "yacito"
+              ]
+            },
+            {
+              "option": "Yerko",
+              "texts": [
+                "yerk",
+                "yerkito"
+              ]
+            },
+            {
+              "option": "Yeferson",
+              "texts": [
+                "yefe",
+                "son"
+              ]
+            },
+            {
+              "option": "Yuri",
+              "texts": [
+                "yuri",
+                "yurito"
+              ]
+            },
+            {
+              "option": "Yeremías",
+              "texts": [
+                "yere",
+                "mías"
+              ]
+            },
+            {
+              "option": "Zacarías",
+              "texts": [
+                "zaca",
+                "zacar"
+              ]
+            },
+            {
+              "option": "Zoe",
+              "texts": [
+                "zo",
+                "zoecita"
+              ]
+            }
+          ]
+        }
+      }
+    }
+  },
+  "nlgManager": {
+    "settings": {
+      "tag": "nlg-manager"
+    },
+    "responses": {
+      "es": {
+        "cliente.ubi": [
+          {
+            "answer": "Tenemos alcance a {{entities.localidades.option ? entities.localidades.option :  entities.localidades.items[0].option}}, podrias decirme tu nombre por favor?"
+          }
+        ],
+        "cliente.nom": [
+          {
+            "answer": "Hola {{entities.nombres.option ? entities.nombres.option :  entities.nombres.items[0].option}}, de donde sos?"
+          }
+        ],
+        "cliente.multi.info": [
+          {
+            "answer": "Hola {{entities.nombres.option ? entities.nombres.option : entities.nombres.items[0].option}} de {{entities.localidades.option ? entities.localidades.option : entities.localidades.items[0].option}}"
+          }
+        ]
+      }
+    }
+  },
+  "actionManager": {
+    "settings": {
+      "tag": "action-manager"
+    },
+    "actions": {}
+  },
+  "slotManager": {
+    "cliente.ubi": {
+      "localidades": {
+        "intent": "cliente.ubi",
+        "entity": "localidades",
+        "mandatory": false,
+        "locales": {}
+      }
+    },
+    "cliente.nom": {
+      "nombres": {
+        "intent": "cliente.nom",
+        "entity": "nombres",
+        "mandatory": false,
+        "locales": {}
+      }
+    },
+    "cliente.multi.info": {
+      "localidades": {
+        "intent": "cliente.multi.info",
+        "entity": "localidades",
+        "mandatory": true,
+        "locales": {
+          "es": "De donde sos?"
+        }
+      },
+      "nombres": {
+        "intent": "cliente.multi.info",
+        "entity": "nombres",
+        "mandatory": true,
+        "locales": {
+          "es": "Como te llamas?"
+        }
+      }
+    }
+  }
+}
