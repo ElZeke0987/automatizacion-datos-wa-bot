@@ -4,8 +4,9 @@ import express from "express";
 import { twilioMsgEndPoint } from '../endpoints/twilioEnd.js';
 import bodyParser from 'body-parser';
 import cors from "cors";
-
+import { join, resolve} from "path";
 import { setupNlp } from "./nlpConfs/nlpMods.js";
+import { returnPage } from "./pagesReturner.js";
 
 const corsOptionsDef = {
     origin: "http://localhost:3000",
@@ -15,15 +16,19 @@ export function ExpressServer(port=3000, server, corsOptions = corsOptionsDef){
 
     setupNlp()
     
-
+    console.log("Path base: ")
     server.use(cors(corsOptions))
     server.use(express.json())
     server.use(bodyParser.urlencoded({ extended: false }))
+    server.use(express.static(resolve("./frontend/out")))
     /*
     app.get('/', subscribeService);
     app.post('/', recibeMsgEvents)*/
+    server.get("/", returnPage)
+    server.get("/webhook-manager", returnPage)
 
-    server.post("/", messagesEnd)
+
+    server.post("/api/messages-end", messagesEnd)
     server.get("/test-ngrok", (req, res)=>{console.log("Test Ngrok"); res.status(200).send("OK")})
 
 
