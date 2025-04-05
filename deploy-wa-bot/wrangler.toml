@@ -1,5 +1,0 @@
-name = "frontend"
-compatibility_date = "2024-04-01"
-
-[build]
-command = "npm run build"

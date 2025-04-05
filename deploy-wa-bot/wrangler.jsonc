@@ -16,7 +16,29 @@
 	},
 	"observability": {
 		"enabled": true
-	}
+	},
+	
+	"kv_namespaces": [
+		{
+			"binding": "SANDBOX_KEY",
+			"id": "2205",
+			"preview_id": "2110"
+		},
+	],
+	"durable_objects": {
+		"bindings": [
+			{
+				"name": "COOLDOWN_DO",
+				"class_name": "CooldownDO"
+			}
+		]
+	},
+	"migrations": [
+		{
+			"tag": "v1",
+			"new_classes": ["CooldownDO"]
+		}
+	]
 	/**
 	 * Smart Placement
 	 * Docs: https://developers.cloudflare.com/workers/configuration/smart-placement/#smart-placement

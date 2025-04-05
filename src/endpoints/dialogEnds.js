@@ -7,12 +7,13 @@ let API_KEY;
 import fs from "fs";
 import { loadNlp, processText } from "../mods/nlpConfs/nlpMods.js";
 import { response } from "express";
+import { wGetSandboxKey } from "../../deploy-wa-bot/src/mods/keySavers.js";
 
 
-function setSandboxKey(key){
+export function setSandboxKey(key){
     fs.writeFileSync('./src/endpoints/json/api_sandbox_key.json',JSON.stringify({key}))
 }
-function getSandboxKey(){
+export function getSandboxKey(){
     const data = fs.readFileSync('./src/endpoints/json/api_sandbox_key.json', 'utf8');
     const jsonData = JSON.parse(data);
     return jsonData.key;
@@ -44,12 +45,12 @@ export async function setWebhookD360(req, res){
     })
 }
 
-export async function sendMessageD360(numberTo, msg){
+export async function sendMessageD360(numberTo, msg, env){
     const sendMsgBody={
         method: "POST",
         headers: {
             "Content-Type": "application/json",
-            "D360-API-KEY": getSandboxKey(),
+            "D360-API-KEY": env==undefined?getSandboxKey():wGetSandboxKey(env),
         },
         body: JSON.stringify({
             "messaging_product": "whatsapp",
@@ -85,7 +86,8 @@ function getResponseData(responseNLP){
     return dataObj
 }
 
-async function processStep(textMsg, numberFrom, toResetMessagesList){
+export async function processStep(textMsg, numberFrom, toResetMessagesList, env){
+    console.log("Loading NLP");
     const manager = await loadNlp();
     const response = await processText(manager, textMsg);
     
@@ -102,7 +104,7 @@ async function processStep(textMsg, numberFrom, toResetMessagesList){
 
 
 
-    await sendMessageD360(numberFrom, response.answers[0]?.answer||`Perdone, no hay respuestas predefinidas, valores:  ${response.entities[0].option} , ${response.entities[1]&&response.entities[1].option}`)
+    await sendMessageD360(numberFrom, response.answers[0]?.answer||`Perdone, no hay respuestas predefinidas, valores:  ${response.entities[0].option} , ${response.entities[1]&&response.entities[1].option}`, env)
 }
 
 export async function messagesEnd(req, res){
