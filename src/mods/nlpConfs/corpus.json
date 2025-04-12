@@ -38,9 +38,11 @@
                 "%localidades% %nombres%",
                 "soy de @localidades me llamo @nombres",
                 "me llamo @nombres de @localidades",
-                "hola me llamo @nombres de @localidades"
-                
-
+                "hola me llamo @nombres de @localidades",
+                "hola buenos dias soy @nombres de @localidades",
+                "hola buenas tardes soy @nombres de @localidades",
+                "hola buenas noches soy @nombres de @localidades",
+                "vivo en @localidades y me llamo @nombres"
             ],
             "answers":[
                 "Hola {{entities.nombres.option ? entities.nombres.option : entities.nombres.items[0].option}} de {{entities.localidades.option ? entities.localidades.option : entities.localidades.items[0].option}}"

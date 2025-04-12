@@ -16,7 +16,6 @@ export function ExpressServer(port=3000, server, corsOptions = corsOptionsDef){
 
     setupNlp()
     
-    console.log("Path base: ")
     server.use(cors(corsOptions))
     server.use(express.json())
     server.use(bodyParser.urlencoded({ extended: false }))
@@ -28,14 +27,14 @@ export function ExpressServer(port=3000, server, corsOptions = corsOptionsDef){
     server.get("/webhook-manager", returnPage)
 
 
-    server.post("/api/messages-end", messagesEnd)
+    server.post("/api/messages", messagesEnd)
     server.get("/test-ngrok", (req, res)=>{console.log("Test Ngrok"); res.status(200).send("OK")})
 
 
     server.post('/twilio_end_msg', twilioMsgEndPoint)
-    server.get("/set-webhook-d360", setWebhookD360)
+    server.get("/api/set-webhook-d360", setWebhookD360)
 
-    server.post("/set-webhook-d360", setWebhookD360)
+    server.post("/api/set-webhook-d360", setWebhookD360)
 
    
     

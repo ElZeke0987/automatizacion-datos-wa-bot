@@ -10,16 +10,16 @@ const PORT = 3030;
 
 /*
 nextApp.prepare().then(()=>{*/
-    const server = express()
+const server = express()
 
-    ExpressServer(PORT, server)
+ExpressServer(PORT, server)
 
-    /*server.all("*", (req, res)=>{
-        return handle(req, res)
-    })*/
+/*server.all("*", (req, res)=>{
+    return handle(req, res)
+})*/
 
-    server.listen(PORT, () => {
-        console.log(`Example app listening on port ${PORT}!`)
-    })
+server.listen(PORT, () => {
+    console.log(`Example app listening on port ${PORT}!`)
+})
 //})
 

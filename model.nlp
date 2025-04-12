@@ -81,6 +81,22 @@
           "@local,@nombr,de,hol,llam,me": {
             "intent": "cliente.multi.info",
             "domain": "default"
+          },
+          "@local,@nombr,buen,de,dia,hol,ser": {
+            "intent": "cliente.multi.info",
+            "domain": "default"
+          },
+          "@local,@nombr,buen,de,hol,ser,tard": {
+            "intent": "cliente.multi.info",
+            "domain": "default"
+          },
+          "@local,@nombr,buen,de,hol,noch,ser": {
+            "intent": "cliente.multi.info",
+            "domain": "default"
+          },
+          "@local,@nombr,en,llam,me,viv,y": {
+            "intent": "cliente.multi.info",
+            "domain": "default"
           }
         },
         "intentDict": {
@@ -153,6 +169,26 @@
             "domain": "default",
             "utterance": "hola me llamo @nombres de @localidades",
             "intent": "cliente.multi.info"
+          },
+          {
+            "domain": "default",
+            "utterance": "hola buenos dias soy @nombres de @localidades",
+            "intent": "cliente.multi.info"
+          },
+          {
+            "domain": "default",
+            "utterance": "hola buenas tardes soy @nombres de @localidades",
+            "intent": "cliente.multi.info"
+          },
+          {
+            "domain": "default",
+            "utterance": "hola buenas noches soy @nombres de @localidades",
+            "intent": "cliente.multi.info"
+          },
+          {
+            "domain": "default",
+            "utterance": "vivo en @localidades y me llamo @nombres",
+            "intent": "cliente.multi.info"
           }
         ],
         "domains": {
@@ -180,7 +216,12 @@
               "me": 1,
               "llam": 1,
               "@nombr": 1,
-              "hol": 1
+              "hol": 1,
+              "buen": 1,
+              "dia": 1,
+              "tard": 1,
+              "noch": 1,
+              "y": 1
             },
             "intents": {
               "cliente.ubi": 1,
@@ -214,7 +255,14 @@
                 "me": 1,
                 "llam": 1,
                 "@nombr": 1,
-                "hol": 1
+                "hol": 1,
+                "buen": 1,
+                "dia": 1,
+                "tard": 1,
+                "noch": 1,
+                "viv": 1,
+                "en": 1,
+                "y": 1
               }
             },
             "featuresToIntent": {
@@ -236,10 +284,12 @@
                 "cliente.multi.info"
               ],
               "viv": [
-                "cliente.ubi"
+                "cliente.ubi",
+                "cliente.multi.info"
               ],
               "en": [
-                "cliente.ubi"
+                "cliente.ubi",
+                "cliente.multi.info"
               ],
               "res": [
                 "cliente.ubi"
@@ -262,6 +312,21 @@
               ],
               "hol": [
                 "cliente.nom",
+                "cliente.multi.info"
+              ],
+              "buen": [
+                "cliente.multi.info"
+              ],
+              "dia": [
+                "cliente.multi.info"
+              ],
+              "tard": [
+                "cliente.multi.info"
+              ],
+              "noch": [
+                "cliente.multi.info"
+              ],
+              "y": [
                 "cliente.multi.info"
               ]
             },
@@ -289,7 +354,12 @@
                 "me",
                 "llam",
                 "@nombr",
-                "hol"
+                "hol",
+                "buen",
+                "dia",
+                "tard",
+                "noch",
+                "y"
               ],
               "intents": [
                 "cliente.ubi",
@@ -298,49 +368,64 @@
               ],
               "perceptrons": [
                 [
-                  8.956280708312988,
-                  1.1754213571548462,
-                  2.6313843727111816,
-                  5.169767379760742,
-                  1.2691270112991333,
-                  2.5383734703063965,
-                  1.2692897319793701,
-                  -14.258885383605957,
-                  -4.020573139190674,
-                  -4.020573139190674,
-                  -6.482683181762695,
-                  -0.35822397470474243,
-                  5.3081911917860385
+                  8.590208053588867,
+                  1.7699229717254639,
+                  2.126837968826294,
+                  4.725480079650879,
+                  1.2992210388183594,
+                  2.598634719848633,
+                  1.2994829416275024,
+                  -14.243370056152344,
+                  -3.536860704421997,
+                  -3.536860704421997,
+                  -7.4304304122924805,
+                  -3.2432007789611816,
+                  -2.935955762863159,
+                  -1.0860456228256226,
+                  -0.9529553055763245,
+                  -0.8901057839393616,
+                  -1.4384866952896118,
+                  5.661960619466253
                 ],
                 [
-                  -14.262253761291504,
-                  1.3534541130065918,
-                  -7.830525875091553,
-                  -7.830525875091553,
+                  -14.247550964355469,
+                  1.5826648473739624,
+                  -7.0597310066223145,
+                  -8.864570617675781,
+                  -1.804592251777649,
+                  -1.804592251777649,
                   0,
-                  0,
-                  0,
-                  7.556033134460449,
-                  0.6751582026481628,
-                  0.6751582026481628,
-                  6.221994400024414,
-                  0.0029466815758496523,
-                  6.71115896301099
+                  7.5944366455078125,
+                  0.787013828754425,
+                  0.787013828754425,
+                  6.043539047241211,
+                  0.009593038819730282,
+                  -0.18687620759010315,
+                  -0.1319696605205536,
+                  -0.020544352009892464,
+                  -0.0008540311828255653,
+                  -1.804592251777649,
+                  6.661119378518304
                 ],
                 [
-                  13.872261047363281,
-                  -0.3581404387950897,
-                  7.915295124053955,
-                  6.285947799682617,
-                  -0.8229173421859741,
-                  -1.6104905605316162,
-                  -0.7173237800598145,
-                  13.894990921020508,
-                  4.8189496994018555,
-                  4.8189496994018555,
-                  4.19190788269043,
-                  -0.15454913675785065,
-                  -13.621737247087681
+                  13.818374633789062,
+                  -0.42494335770606995,
+                  7.023479461669922,
+                  7.173149585723877,
+                  1.4695570468902588,
+                  0.14916498959064484,
+                  -1.284873604774475,
+                  13.84392261505127,
+                  3.268988847732544,
+                  3.268988847732544,
+                  7.240710735321045,
+                  -0.1939031034708023,
+                  5.258149147033691,
+                  1.7591626644134521,
+                  1.7513375282287598,
+                  1.7483712434768677,
+                  5.242893695831299,
+                  -13.534702671426986
                 ]
               ]
             }
@@ -401,6 +486,22 @@
       [
         "es",
         "hola me llamo @nombres de @localidades"
+      ],
+      [
+        "es",
+        "hola buenos dias soy @nombres de @localidades"
+      ],
+      [
+        "es",
+        "hola buenas tardes soy @nombres de @localidades"
+      ],
+      [
+        "es",
+        "hola buenas noches soy @nombres de @localidades"
+      ],
+      [
+        "es",
+        "vivo en @localidades y me llamo @nombres"
       ]
     ]
   },

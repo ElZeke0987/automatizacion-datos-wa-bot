@@ -12,7 +12,7 @@ export async function wMessagesEnd(req, env){
     const iDCooldownDO= env.COOLDOWN_DO.idFromName('cooldow_durable_object');
     const CooldownDOStub= env.COOLDOWN_DO.get(iDCooldownDO);
     await CooldownDOStub.fetch(request)
-    /*
+    
     const entryInfoObj=body.entry[0].changes[0].value;
 
     
@@ -41,7 +41,7 @@ export async function wMessagesEnd(req, env){
             //userMessages[numberFrom].push("endmsg");
             //console.log("mensajes: ",userMessages[numberFrom])
             /*userMessages[numberFrom].push("endmsg");*/
-/*
+
         
             processStep(userMessages[numberFrom].join(" "), numberFrom, userMessages, env)//Separacion de mensajes mandados en diferentes tiempos
             
@@ -52,7 +52,7 @@ export async function wMessagesEnd(req, env){
     }else if( entryInfoObj.statuses){
         
     }
-    return new Response("OK")*/
+    return new Response("OK")
 }
 export async function wSetWebhookD360(req, env){
     const body = {};

@@ -8,6 +8,7 @@ import fs from "fs";
 import { loadNlp, processText } from "../mods/nlpConfs/nlpMods.js";
 import { response } from "express";
 import { wGetSandboxKey } from "../../deploy-wa-bot/src/mods/keySavers.js";
+import { setWebhookD360GET, setWebhookD360POST } from "../mods/D360/webhookSetups.js";
 
 
 export function setSandboxKey(key){
@@ -18,31 +19,13 @@ export function getSandboxKey(){
     const jsonData = JSON.parse(data);
     return jsonData.key;
 }
+
 export async function setWebhookD360(req, res){
-    const body = req.body;
-    if(!body){
-        console.error("No se proporciono un body para poner el webhook en d360")
-        return
-    }
-    setSandboxKey(body.API_KEY)
-    const setWebhookBody={
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json",
-            "D360-API-KEY": body.API_KEY,
-        },
-        body:  JSON.stringify({
-            "url":  body.newUrl,
-        })
-    }
-    console.log("Sending fetch: API_KEY:", body.API_KEY);
-    fetch("https://waba-sandbox.360dialog.io/v1/configs/webhook", setWebhookBody).then(response=>{
-        console.log("response of setting webhook: ", response.status, response.statusText)
-        res.status(200).send("OK")
-    })
-    .catch(err=>{
-        console.error("Hubo un error: ", err)
-    })
+    console.log("Setting webhook")
+
+        setWebhookD360POST(req, res);
+
+   // setWebhookD360GET(req, res)
 }
 
 export async function sendMessageD360(numberTo, msg, env){
