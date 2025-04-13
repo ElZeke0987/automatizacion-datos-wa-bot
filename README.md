@@ -10,4 +10,4 @@ Todo lo relacionado con la documentacion del codigo, se encuentra entre comentar
 
 # Licencia
 
-Este proyecto/software esta licenciado bajo los terminos de licencia propietaria en [LICENSE](./LICENSE)
+Este proyecto/software esta licenciado bajo los terminos de licencia propietaria en [LICENCE](./LICENSE)

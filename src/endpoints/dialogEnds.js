@@ -33,7 +33,7 @@ export async function sendMessageD360(numberTo, msg, env){
         method: "POST",
         headers: {
             "Content-Type": "application/json",
-            "D360-API-KEY": env==undefined?getSandboxKey():wGetSandboxKey(env),
+            "D360-API-KEY": env==undefined?getSandboxKey():wGetSandboxKey(env),//Se obtiene la API-key guardada
         },
         body: JSON.stringify({
             "messaging_product": "whatsapp",
