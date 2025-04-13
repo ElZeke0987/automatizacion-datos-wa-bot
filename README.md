@@ -6,7 +6,7 @@ Este es un software de gestion de mensajes entrantes de WhatsApp, que depende de
 
 # Documentacion
 
-Todo lo relacionado con la documentacion del codigo, se encuentra entre comentarios, pero sustancialmente en la carpeta [docs]()
+Todo lo relacionado con la documentacion del codigo, se encuentra entre comentarios, pero sustancialmente en la carpeta [docs](./docs/index.md)
 
 # Licencia
 
