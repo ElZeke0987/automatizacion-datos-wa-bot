@@ -7,6 +7,7 @@ import cors from "cors";
 import { join, resolve} from "path";
 import { setupNlp } from "./nlpConfs/nlpMods.js";
 import { returnPage } from "./pagesReturner.js";
+import { metaEnds } from "../endpoints/metaEnds.js";
 
 const corsOptionsDef = {
     origin: "http://localhost:3000",
@@ -36,6 +37,7 @@ export function ExpressServer(port=3000, server, corsOptions = corsOptionsDef){
 
     server.post("/api/set-webhook-d360", setWebhookD360)
 
+    metaEnds(server);
    
     
 
