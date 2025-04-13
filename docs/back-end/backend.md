@@ -1,7 +1,7 @@
-[Go back](../index.md)
-
-[Bot Docs](./bot.md)
-[API WhatsApp Docs](./api-whatsapp.md)
+- [Go back](../index.md)
+ 
+- [Bot Docs](./bot.md)
+- [API WhatsApp Docs](./api-whatsapp.md)
 
 # Back-End
 
