@@ -4,7 +4,6 @@
 
 Esta API es la que nos da la posibilidad de hacer que funcione el bot como tal
 
-
 ## Webhooks
 
 Son los lugares a los cuales la API de WhatsApp enviara todos los eventos

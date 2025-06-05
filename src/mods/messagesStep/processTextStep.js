@@ -5,7 +5,20 @@ import { sendMessageD360, sendMessageMeta } from "../sendersMessages.js";
 let userMessages = {};
 let cooldownToProcces = false;
 let userTimers={};
+let userData={};
 const cooldownTime=5000;
+
+function getResponseData(responseNLP){
+    let dataObj={
+        nombres: "",
+        localidades: ""
+    }
+    responseNLP.entities.forEach(entity => {
+        dataObj[entity.entity]=entity.option
+    });
+    return dataObj
+}
+
 
 export async function preProcessStep(req, res, bsp){
     const entryInfoObj=req.body.entry[0].changes[0].value;
@@ -31,12 +44,12 @@ export async function preProcessStep(req, res, bsp){
         if(userTimers[numberFrom]){
             clearTimeout(userTimers[numberFrom]);
         }
-        userTimers[numberFrom]=setTimeout(()=>{//Funcion cuando se termine el cooldown
+        userTimers[numberFrom]=setTimeout(async()=>{//Funcion cuando se termine el cooldown
             //console.log("procesando el mensaje: ",entryInfoObj)
             //userMessages[numberFrom].push("endmsg");
             //console.log("mensajes: ",userMessages[numberFrom])
             /*userMessages[numberFrom].push("endmsg");*/
-            processStep(msgObj,userMessages[numberFrom].join(" "), numberFrom, business_phone_number_id, userMessages,  bsp, env)//Separacion de mensajes mandados en diferentes tiempos
+            await processStep(msgObj,userMessages[numberFrom].join(" "), numberFrom, business_phone_number_id, userMessages,  bsp, res)//Separacion de mensajes mandados en diferentes tiempos
             
             delete userTimers[numberFrom];
         }, cooldownTime)
@@ -49,9 +62,9 @@ export async function preProcessStep(req, res, bsp){
     res.status(200).send("OK")
 }
 
-export async function processStep(msgObj ,textMsg, numberFrom, business_phone_number_id, toResetMessagesList, bsp){
+export async function processStep(msgObj ,textMsg, numberFrom, business_phone_number_id, toResetMessagesList, bsp, res){
     
-    console.log("Loading NLP");
+    console.log("Loading NLP for", bsp);
     const manager = await loadNlp();
     const response = await processText(manager, textMsg);
     
@@ -60,13 +73,16 @@ export async function processStep(msgObj ,textMsg, numberFrom, business_phone_nu
         console.log("El usuario envio un mensaje poco entendible")
         return
     }
-    console.log("response: ", response)
+    console.log("response wtf: ", response.statusText)
     console.log("DATA: ", getResponseData(response))
+    
+    userData[numberFrom]=getResponseData(response);
     if(response?.classifications[0].intent==="cliente.multi.info"){//Si se obtienen los dos datos, recien ahi se resetea el proceso de preguntas
         toResetMessagesList=[];
     }
+ console.log("No hay nada mas: ", msgObj)
+    const responseMsg=response.answers[0]?.answer||`Perdone, no hay respuestas predefinidas, valores:  ${response?.entities[0]?.option} , ${response?.entities[1]&&response?.entities[1]?.option}`
 
-    const responseMsg=response.answers[0]?.answer||`Perdone, no hay respuestas predefinidas, valores:  ${response.entities[0].option} , ${response.entities[1]&&response.entities[1].option}`
-
-    bsp==="meta"? await sendMessageMeta(msgObj, business_phone_number_id, responseMsg):await sendMessageD360(numberFrom, responseMsg, env);
+    bsp==="meta"? await sendMessageMeta(msgObj, business_phone_number_id, responseMsg, res):await sendMessageD360(numberFrom, responseMsg, env);
+   
 }

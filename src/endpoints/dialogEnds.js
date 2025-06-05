@@ -35,16 +35,6 @@ let cooldownToProcces = false;
 let userTimers={};
 const cooldownTime=5000;
 
-function getResponseData(responseNLP){
-    let dataObj={
-        nombres: "",
-        localidades: ""
-    }
-    responseNLP.entities.forEach(entity => {
-        dataObj[entity.entity]=entity.option
-    });
-    return dataObj
-}
 
 
 export async function messagesEnd(req, res){

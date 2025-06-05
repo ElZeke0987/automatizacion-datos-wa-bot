@@ -1,3 +1,4 @@
+import axios from "axios";
 import { getSandboxKey } from "../endpoints/dialogEnds.js"
 const { GRAPH_API_TOKEN } = process.env;
 
@@ -23,12 +24,12 @@ export async function sendMessageD360(numberTo, msg, env){
     .then(response=>{
         console.log("RESPUESTA: ", response.status, response.statusText)
     })
-    .catch(err=> console.error("Hubo un error >>>",err))
+    .catch(err=> console.error("Hubo un error >>>"))
 }
 
-export async function sendMessageMeta(message, business_phone_number_id, textToSend){
+export async function sendMessageMeta(message, business_phone_number_id, textToSend, res){
     // log incoming messages
-    console.log("Incoming webhook message:", JSON.stringify(req.body, null, 2));
+    console.log("Incoming webhook message:");
       
     // check if the webhook request contains a message
     // details on WhatsApp text message payload: https://developers.facebook.com/docs/whatsapp/cloud-api/webhooks/payload-examples#text-messages
@@ -36,40 +37,43 @@ export async function sendMessageMeta(message, business_phone_number_id, textToS
   
     // check if the incoming message contains text
     if (message?.type === "text") {
-      // extract the business number to send the reply from it
-      
-  
-      // send a reply message as per the docs here https://developers.facebook.com/docs/whatsapp/cloud-api/reference/messages
-    await axios({
-        method: "POST",
-        url: `https://graph.facebook.com/v18.0/${business_phone_number_id}/messages`,
-        headers: {
-          Authorization: `Bearer ${GRAPH_API_TOKEN}`,//Token de acceso brindado en App > Productos > WhatsApp > Configuracion de API
-        },
-        data: {
-          messaging_product: "whatsapp",
-          to: message.from,
-          text: { body: textToSend },
-          context: {
-            message_id: message.id, // shows the message as a reply to the original user message
+        // extract the business number to send the reply from it
+      try{
+// send a reply message as per the docs here https://developers.facebook.com/docs/whatsapp/cloud-api/reference/messages
+        await axios({
+          method: "POST",
+          url: `https://graph.facebook.com/v18.0/${business_phone_number_id}/messages`,
+          headers: {
+            Authorization: `Bearer ${GRAPH_API_TOKEN}`,//Token de acceso brindado en App > Productos > WhatsApp > Configuracion de API
           },
-        },
-      });
-  
-      // mark incoming message as read
-      await axios({
-        method: "POST",
-        url: `https://graph.facebook.com/v18.0/${business_phone_number_id}/messages`,
-        headers: {
-          Authorization: `Bearer ${GRAPH_API_TOKEN}`,
-        },
-        data: {
-          messaging_product: "whatsapp",
-          status: "read",
-          message_id: message.id,
-        },
-      })
+          data: {
+            messaging_product: "whatsapp",
+            to: '543548554182',//message.from,
+            text: { body: textToSend },
+            /*context: {
+              message_id: message.id, // shows the message as a reply to the original user message
+            },*/
+          },
+        });
+
+        // mark incoming message as read
+        await axios({
+          method: "POST",
+          url: `https://graph.facebook.com/v18.0/${business_phone_number_id}/messages`,
+          headers: {
+            Authorization: `Bearer ${GRAPH_API_TOKEN}`,
+          },
+          data: {
+            messaging_product: "whatsapp",
+            status: "read",
+            message_id: message.id,
+          },
+        })
+      } catch(err){
+        console.log("Error: ",err.code, err.message,": ", err.response.data.error)
+      } 
+    
+        
     }
   
-    res.sendStatus(200);
 }

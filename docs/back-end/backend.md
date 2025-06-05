@@ -13,6 +13,10 @@ Simplemente, desde "D:\@ARCHIVOS_USUARIO@\Desktop\Automatizaciones\Automatizacio
 
 Tardara unos segundo y se iniciara.
 
+### Poner webhooks (recibir mensajes)
+
+Generalmente se hace desde la parte de la App en Meta For Devs, Vamos ahi Productos > WhatsApp > Configuracion y ahi pones el link del webhook, con la base de la URL y el path /webhook-meta, en el cual se recibiran los mensajes al/los numeros definidos para el bot.
+
 ## Devolver front-end
 
 El back-end tiene end-points para devolver paginas front-end estaticas. No se vera necesario por el momento el uso de Next.js dinamico.
@@ -23,7 +27,7 @@ Desde "D:\@ARCHIVOS_USUARIO@\Desktop\Automatizaciones\Automatizacion-Datos\front
 
 ## Inicio de sesion 
 
-Es vital para mantener la seguridad del CRM y los datos de los clientes.
+Es vital para mantener la seguridad del CRM y los datos de los clientes. 
 
 ## Envio de datos a otro CRM
 

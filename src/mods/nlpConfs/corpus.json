@@ -4,7 +4,18 @@
     "contextData": ["./src/mods/nlpConfs/localidades.json","./src/mods/nlpConfs/nombres.json"],
     "data": [
         
-        
+        {
+            "intent":"cliente.consulta",
+            "utterances":[
+                "hola",
+                "hola quiero precio",
+                "precio",
+                "me pueden dar informacion"
+            ],
+            "answers":[
+                "Hola, gracias por comunicarte con nosotros, podria brindarnos su nombre y de que localidad es? asi podremos gestionar instalacion del equipo"
+            ]
+        },
         {
             "intent": "cliente.ubi",
             "utterances": [

@@ -72,7 +72,7 @@ export function setWebhookMeta(req, res){
     const mode = req.query["hub.mode"];
     const token = req.query["hub.verify_token"];
     const challenge = req.query["hub.challenge"];
-    
+    console.log("Verifying webhook and that")
     // check the mode and token sent are correct
     if (mode === "subscribe" && token === WEBHOOK_VERIFY_TOKEN) {
         // respond with 200 OK and challenge token from the request
